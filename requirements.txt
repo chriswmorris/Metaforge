@@ -1,0 +1,4 @@
+progress>=1.4
+dominate>=2.3.5
+colorama>=0.4.1
+pyexifinfo>=0.4.0
