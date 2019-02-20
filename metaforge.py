@@ -8,7 +8,7 @@
 #=====================================================
 #
 #
-#@version	1.0
+#@version	1.1
 #@link		https://github.com/chriswmorris/Metaforge
 #@authors	Chris Morris & Collin Mockbee
 
