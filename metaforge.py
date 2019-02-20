@@ -40,7 +40,7 @@ def credits():
 	print("")
 	print(Style.BRIGHT+ Fore.BLUE + "Metaforge")
 	print(Fore.WHITE + "A metadata analyzer that creates dynamic reports with a unique filter")
-	print("Version 1.0")
+	print("Version 1.1")
 	print(Style.RESET_ALL)
 	print()
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
