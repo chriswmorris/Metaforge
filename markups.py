@@ -21,8 +21,19 @@ def statshtml():
 # 6) Device/manufact. model
 # 7) Top 5 largest files
 # Then Generate the html report
+	
 
+	# ADD CUSTOM TAGS HERE:
+	# The best way to look for tags is to run exiftool -j -G <filename> 
+	# FORMAT: add "" and a comma to separate them. Example: "Composite:GPSPosition","EXIF:GPSAltitude"
+	# 
+	# Leave the PLACEHOLDER there if there's only one tag
+	# Delete "DELETE_ME" when entering in another tag
+	# Delete the PLACEHOLDER and DELETE_ME when you have more than 1 tag
 
+	customtags = ("PLACEHOLDER", "DELETE_ME")
+
+	#################################################################################
 
 	# FILETYPE CHART
 	# Stats about the number of files in each supported filetype
@@ -100,6 +111,43 @@ def statshtml():
 	except:
 		print("Error: Geolocation chart generation failed: ", sys.exc_info() )
 
+
+
+	# AUTHOR,ORG,COMPANY AND CREATORS CHART
+	# Filters through media to find only files with above info 
+
+	authortags=("XMP:Creator", "XML:Company","FlashPix:Author","FlashPix:Company","HTML:Author","XMP-dc:Creator","PDF:Creator",
+		"PDF:Producer", "PDF:Author","EXE:LegalCopyright","EXE:CompanyName","Torrent:Creator")
+
+	authordir=(ROOT_DIR + "/exifdata/stats/authors/")
+
+	try:
+		os.chdir(jsonalldir)
+		for authorfile in os.listdir("."):
+			with open(authorfile) as oauthorfile:
+				baseauthor = os.path.basename(authorfile)
+				with open(os.path.splitext(baseauthor)[0]+".txt", "w") as authoretcfile:
+					for authorline in oauthorfile:
+						for authortag in authortags:
+							if authortag in authorline:
+								authoretcfile.write(authorline+ "\n")
+
+		os.chdir(jsonalldir)
+		for authorfile in os.listdir("."):
+			if ".txt" in authorfile:
+				shutil.move(jsonalldir + authorfile, authordir)
+
+		os.chdir(authordir)
+		for authorfile in os.listdir("."):
+			if os.path.exists(authorfile) and os.path.getsize(authorfile) == 0:
+				os.remove(authorfile)
+
+
+	except:
+		print("Error: Author/Creator/etc chart generation failed: ", sys.exc_info() )
+
+
+
 	#SOFTWARE CHARTS
 	#Filters through media to find only files with Software data		
 
@@ -162,6 +210,35 @@ def statshtml():
 	except:
 		print("Error: Device/Model chart generation failed: ", sys.exc_info() )
 
+	# CUSTOM CHART
+	# CUSTOM TAGS WILL BE HERE
+	customdir = (ROOT_DIR + "/exifdata/stats/custom/")
+
+	try:
+		os.chdir(jsonalldir)
+		for customfile in os.listdir("."):
+			with open(customfile) as ocustomfile:
+				basecustom = os.path.basename(customfile)
+				with open(os.path.splitext(basecustom)[0]+".txt", "w") as thecustomfile:	
+					for customline in ocustomfile:
+						for customtag in customtags:
+							if customtag in customline:
+								thecustomfile.write(customline + "\n")
+
+		os.chdir(jsonalldir)						
+		for customfile in os.listdir("."):
+			if ".txt" in customfile:
+				shutil.move(jsonalldir + customfile, customdir)
+
+		os.chdir(customdir)		
+		for customfile in os.listdir("."):
+			if os.path.exists(customfile) and os.path.getsize(customfile) == 0:
+				os.remove(customfile)
+
+	except:
+		print("Error: Custom chart generation failed: ", sys.exc_info() )
+
+
 	# FILTERED DATA VS RAW EXIF
 	# Count the number of lines in all filtered and all raw
 	# Use jsonalldir for raw metadata
@@ -211,6 +288,9 @@ def statshtml():
 	with doc:
 		h1("Metaforge")
 		h3("Home/Statistics")
+		with div(id='metaforge-credits'):
+			p("Created Chris Morris and Collin Mockbee")
+			p("https://github.com/chriswmorris/Metaforge")
 		br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
@@ -274,8 +354,20 @@ def statshtml():
 							for g_line in gfile_read:
 								p(gfile_read.readlines(1))
 							br()
-					os.chdir(ROOT_DIR)				
+					os.chdir(ROOT_DIR)	
 
+				with div(id='authorchart'):
+					h4("Authors/Companies/etc")
+					with div (id='author-box'):
+						os.chdir(authordir)
+						for authorfile in os.listdir("."):
+							authorfilename = os.path.splitext(authorfile)[0]
+							author_read = open(authorfile, 'r')
+							h4(authorfilename)
+							p(author_read.readline())
+							for auth_line in author_read:
+								p(author_read.readlines(1))
+							br()
 
 				with div(id='softwarechart'):
 					h4("Software")
@@ -291,6 +383,7 @@ def statshtml():
 							br()
 					os.chdir(ROOT_DIR)
 
+			with div(id='thirdrow'):
 				with div(id='devicechart'):
 					h4("Devices/Models")
 					with div(id='device-box'):
@@ -302,6 +395,20 @@ def statshtml():
 							p(sfile_read.readline())
 							for soft_line in sfile_read:
 								p(sfile_read.readlines(8))
+							br()
+					os.chdir(ROOT_DIR)
+
+				with div(id='customchart'):
+					h4("Custom Tags")
+					with div(id='custom-box'):
+						os.chdir(customdir)
+						for customfile in os.listdir("."):
+							customfilename = os.path.splitext(customfile)[0]
+							custom_read = open(customfile, 'r')
+							h4(customfilename)
+							p(custom_read.readline())
+							for custom_line in custom_read:
+								p(custom_read.readlines(8))
 							br()
 					os.chdir(ROOT_DIR)
 
@@ -327,6 +434,9 @@ def filtershtml():
 	with doc:
 		h1("Metaforge")
 		h3("Filtered Metadata")
+		with div(id='metaforge-credits'):
+			p("Created Chris Morris and Collin Mockbee")
+			p("https://github.com/chriswmorris/Metaforge")
 		br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
@@ -337,6 +447,12 @@ def filtershtml():
 					a('Hexadecimal_View', href='hexdump.html' % ['hexdump'])
 	
 			with span(id='filtered'):
+				p(b("This section contains a shortened view of all of the metadata from all files."))
+				p("We went through the tags of each individual filetype and selected only noteworthy and important tags so you don't have to look through useless meta ;)")
+				br()
+				br()
+				br()
+
 				#loop through all exifoutputs
 				os.chdir(ROOT_DIR +"/exifdata/filtered/")
 				for file in os.listdir("."):
@@ -366,6 +482,9 @@ def rawmetahtml():
 	with doc:
 		h1("Metaforge")
 		h3("All Metadata")
+		with div(id='metaforge-credits'):
+			p("Created Chris Morris and Collin Mockbee")
+			p("https://github.com/chriswmorris/Metaforge")
 		br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
@@ -401,6 +520,9 @@ def hexmetahtml():
 	with doc:
 		h1("Metaforge")
 		h3("Hexadecimal View of the Metadata")
+		with div(id='metaforge-credits'):
+			p("Created Chris Morris and Collin Mockbee")
+			p("https://github.com/chriswmorris/Metaforge")
 		br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
@@ -422,7 +544,4 @@ def hexmetahtml():
 					
 	with open('hexdump.html', 'w') as hexdump:
 		hexdump.write(doc.render()) 
-
-
-
 
