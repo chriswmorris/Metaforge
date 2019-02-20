@@ -7,8 +7,11 @@ import colorama
 from colorama import Fore, Back, Style
 
 
-#This fuction checks to make sure that the exifdata directory is set correctly
 def stageset():
+
+	#This fuction checks to make sure that the exifdata directory is set correctly
+	#It creates folders that need to be there
+	
 	exifdatadir = ROOT_DIR + "/exifdata/"
 	filtereddir = ROOT_DIR + "/exifdata/filtered/"
 	hexhtmldir = ROOT_DIR + "/exifdata/hex_html/"
@@ -18,6 +21,8 @@ def stageset():
 	geolocationdir = ROOT_DIR + "/exifdata/stats/geolocations"
 	softwaredir = ROOT_DIR + "/exifdata/stats/software"
 	devicesdir = ROOT_DIR + "/exifdata/stats/devices"
+	authorsdir = ROOT_DIR + "/exifdata/stats/authors"
+	customdir = ROOT_DIR + "/exifdata/stats/custom"
 
 	filetypedir = ['odp', 'png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'zip', 'exe',
 	 'xlsx', 'svg', 'pdf', 'mp4', 'html', 'docx', 'gif', 'wav', 'jpeg', 'mkv', 'all']
@@ -50,6 +55,12 @@ def stageset():
 
 	if not os.path.exists(devicesdir):
 		os.mkdir(devicesdir)
+
+	if not os.path.exists(authorsdir):
+		os.mkdir(authorsdir)
+
+	if not os.path.exists(customdir):
+		os.mkdir(customdir)
 
 	for filetype in filetypedir:
 		if not os.path.exists(jsondir + filetype):
