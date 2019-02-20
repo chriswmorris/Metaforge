@@ -9,7 +9,7 @@
 #
 #
 #@version	1.0
-#@link		
+#@link		https://github.com/chriswmorris/Metaforge
 #@authors	Chris Morris & Collin Mockbee
 
 import os, sys
@@ -44,7 +44,7 @@ def credits():
 	print(Style.RESET_ALL)
 	print()
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
-	print("Insert github page here")
+	print("github.com/chriswmorris/Metaforge")
 	print()
 	print("=========================================================")
 	print(Style.RESET_ALL)
