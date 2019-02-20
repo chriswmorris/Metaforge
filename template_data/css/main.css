@@ -13,6 +13,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* NAVBAR */
 
+#metaforge-credits{
+
+	text-align: right;
+}
+
 #navbar{
 
 	margin: 0;
@@ -56,9 +61,12 @@ display: block;
 
 #secondrow{
 
-	display: flex
+	display: flex;
 }
 
+#thirdrow{
+	display: flex;
+}
 
 #filetypechart{
 
@@ -128,12 +136,34 @@ display: block;
 	border-right: 3px solid black;
 	border-left: 3px solid black;
 	border-top: 3px solid black;
+	border-bottom: 3px solid black;
 	width: 520px;
 	position: relative;
 	
+}
+
+
+#authorchart{
+
+	padding: 10px;
 
 
 }
+
+
+#author-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	width: 520px;
+	position: relative;
+
+
+}
+
 
 #softwarechart{
 
@@ -148,6 +178,8 @@ display: block;
 	border-right: 3px solid black;
 	border-left: 3px solid black;
 	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+
 	width: 520px;
 	position: relative;
 
@@ -165,6 +197,24 @@ display: block;
 	border-right: 3px solid black;
 	border-left: 3px solid black;
 	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	width: 520px;
+	position: relative;
+
+}
+
+#customchart{
+
+	padding: 10px;
+
+}
+#custom-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
 	width: 520px;
 	position: relative;
 
