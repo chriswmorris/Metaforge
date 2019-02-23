@@ -1,0 +1,221 @@
+
+/*
+Help:;
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+*/
+
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* NAVBAR */
+
+#metaforge-credits{
+
+	text-align: right;
+}
+
+#navbar{
+
+	margin: 0;
+	overflow: hidden;
+	background-color: lightgrey;
+	display: block;
+	width: 100%;
+	word-spacing:120px;
+}
+
+#nav-li{
+
+	text-align: center;
+
+
+
+}
+
+
+
+/* WRAPPER PORTION */
+span{
+
+display: block;
+
+}
+
+#wrapper{
+
+
+
+}
+
+#toprow{
+
+	display: flex;
+
+
+
+}
+
+#secondrow{
+
+	display: flex;
+}
+
+#thirdrow{
+	display: flex;
+}
+
+#filetypechart{
+
+	padding: 10px;
+
+}
+
+#filetypechart-box{
+	column-count: 2;
+	padding: 10px;
+	position: relative;
+	overflow-x: hidden;
+	line-height: 1%;
+	width: 400px;
+  	height: 350px;
+  	border: 3px solid black; 
+  	
+}
+
+#sizechart{
+
+	padding: 10px;
+
+}
+
+
+#size-box{
+
+	border: 3px solid black; 
+	width: 500px;
+	height: 200px;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+
+
+}
+
+
+#comparechart{
+	padding: 10px;
+
+}
+
+#comparechart-box{
+
+	border: 3px solid black; 
+	width: 400px;
+	height: 200px;
+
+
+}
+
+
+
+
+
+#geolocationschart{
+
+	padding: 10px;
+
+}
+
+#geolocation-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	width: 520px;
+	position: relative;
+	
+}
+
+
+#authorchart{
+
+	padding: 10px;
+
+
+}
+
+
+#author-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	width: 520px;
+	position: relative;
+
+
+}
+
+
+#softwarechart{
+
+	padding: 10px;
+
+}
+
+
+#software-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+
+	width: 520px;
+	position: relative;
+
+
+}
+
+#devicechart{
+
+	padding: 10px;
+
+}
+#device-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	width: 520px;
+	position: relative;
+
+}
+
+#customchart{
+
+	padding: 10px;
+
+}
+#custom-box{
+
+	padding: 10px;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	width: 520px;
+	position: relative;
+
+}
