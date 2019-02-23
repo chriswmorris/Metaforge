@@ -42,7 +42,6 @@ def credits():
 	print(Fore.WHITE + "A metadata analyzer that creates dynamic reports with a unique filter")
 	print("Version 1.1")
 	print(Style.RESET_ALL)
-	print()
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
 	print("github.com/chriswmorris/Metaforge")
 	print()
@@ -82,8 +81,6 @@ def condchecking():
 def projectcreation():
 	print("=======================Step 2: Project Creation=======================")
 	#userproj is either defined by user or 6 random digits
-	#For now the user's report will have to be in ROOT_DIR + User_Projects + userproj, 
-	#not in their personal dirs like ~/, for now
 	#This will create the file structure for the user's project
 
 	print()
@@ -192,10 +189,7 @@ def makereport(PROJ_DIR):
 	print()
 	#This will...
 	#1) Move exifdata to Project folder 
-	#2) Create the three report pages in html
-	#	i.  Index, filtered meta = index.html  | indexfilterHTML()
-	#	ii. Raw Metadata = rawmeta.html  | rawmetaHTML()        
-	#	iii. Hexadecimal view of metadata = rawmeta.html   |   hexmetaHTML()
+	#2) Create the four report pages in html
 	#3) Place the html into the project folder
 
 	def copyfolders(src,dest):
@@ -207,9 +201,8 @@ def makereport(PROJ_DIR):
 			else:
 				raise
 
-
 	try:
-		#This didn't work in Test 1 (see Bug 2)
+	
 		statshtml()
 	except:
 		print("ERROR: could not run stat html report", sys.exc_info()[0])
@@ -232,19 +225,14 @@ def makereport(PROJ_DIR):
 
 	except:
 		print("ERROR: could not run stat html report", sys.exc_info()[0])
-
-
-
-
-# Improve error handling here
 	
 	
 	try:
-		print("Placing template_data into project dir...")
-		copyfolders(ROOT_DIR + "/template_data/", PROJ_DIR + "/template_data/")
+		print("Placing Template_Data into project dir...")
+		copyfolders(ROOT_DIR + "/Template_Data/", PROJ_DIR + "/Template_Data/")
 		
 	except:
-		print(Fore.RED + "ERROR: Failed to copy template_data",sys.exc_info()[0])
+		print(Fore.RED + "ERROR: Failed to copy Template_Data",sys.exc_info()[0])
 		print(Style.RESET_ALL)
 
 
