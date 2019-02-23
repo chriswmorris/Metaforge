@@ -29,8 +29,6 @@ def stageset():
 
 	if not os.path.exists(exifdatadir):
 		os.mkdir(exifdatadir)
-		#print(Fore.GREEN + "Created " + exifdatadir)
-		#print(Style.RESET_ALL)
 
 	if not os.path.exists(filtereddir):
 		os.mkdir(filtereddir)
@@ -77,7 +75,6 @@ def checkdelete():
 
 	 #FILTER DIRECTORY
 	if not os.listdir(filteredjsonpath):
-		#print(filteredjsonpath + " is empty")
 		pass
 	else:
 		print(Fore.RED + filteredjsonpath + " has files inside")
@@ -125,7 +122,6 @@ def checkdelete():
 	os.chdir(jsonpath)
 	for subdir in jsonsubdirs:	
 		if not os.listdir(subdir):
-			#print("Nothing in subdirectory: " + str(subdir))
 			pass	
 		else:
 			print()
