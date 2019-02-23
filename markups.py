@@ -281,8 +281,8 @@ def statshtml():
 
 	#Creates <head>
 	with doc.head:
-		link(rel='stylesheet', href="template_data/css/main.css")
-		script(type='text/javascript', src="template_data/js/main.js")
+		link(rel='stylesheet', href="Template_Data/css/main.css")
+		script(type='text/javascript', src="Template_Data/js/main.js")
 		
 	#Creates <body>
 	with doc:
@@ -427,8 +427,8 @@ def filtershtml():
 
 	#Creates <head>
 	with doc.head:
-		link(rel='stylesheet', href="template_data/css/main.css")
-		script(type='text/javascript', src="template_data/js/main.js")
+		link(rel='stylesheet', href="Template_Data/css/main.css")
+		script(type='text/javascript', src="Template_Data/js/main.js")
 		
 	#Creates <body>
 	with doc:
@@ -475,8 +475,8 @@ def rawmetahtml():
 
 	#Creates <head>
 	with doc.head:
-		link(rel='stylesheet', href="template_data/css/main.css")
-		script(type='text/javascript', src="template_data/js/main.js")
+		link(rel='stylesheet', href="Template_Data/css/main.css")
+		script(type='text/javascript', src="Template_Data/js/main.js")
 		
 	#Creates <body>
 	with doc:
@@ -513,8 +513,8 @@ def hexmetahtml():
 
 	#Creates <head>
 	with doc.head:
-		link(rel='stylesheet', href="template_data/css/main.css")
-		script(type='text/javascript', src="template_data/js/main.js")
+		link(rel='stylesheet', href="Template_Data/css/main.css")
+		script(type='text/javascript', src="Template_Data/js/main.js")
 		
 	#Creates <body>
 	with doc:
