@@ -8,7 +8,7 @@
 #=====================================================
 #
 #
-#@version	1.1
+#@version	1.2 (Finished Edition)
 #@link		https://github.com/chriswmorris/Metaforge
 #@authors	Chris Morris & Collin Mockbee
 
@@ -40,7 +40,7 @@ def credits():
 	print("")
 	print(Style.BRIGHT+ Fore.BLUE + "Metaforge")
 	print(Fore.WHITE + "A metadata analyzer that creates dynamic reports with a unique filter")
-	print("Version 1.1")
+	print("Version 1.2")
 	print(Style.RESET_ALL)
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
 	print("github.com/chriswmorris/Metaforge")
@@ -295,7 +295,7 @@ def makereport(PROJ_DIR):
 	print(Style.RESET_ALL)
 	print(Back.WHITE+ Fore.BLACK+ PROJ_DIR)
 	print(Style.RESET_ALL)
-	print(Style.BRIGHT+ "To view the Report, click on the index.html file")
+	print(Style.BRIGHT+ "To view the Report, click on the index.html file in your User_Projects folder")
 	print(Style.RESET_ALL)
 	print("===============================================================")
 	print()
