@@ -117,7 +117,7 @@ def statshtml():
 	# Filters through media to find only files with above info 
 
 	authortags=("XMP:Creator", "XML:Company","FlashPix:Author","FlashPix:Company","HTML:Author","XMP-dc:Creator","PDF:Creator",
-		"PDF:Producer", "PDF:Author","EXE:LegalCopyright","EXE:CompanyName","Torrent:Creator")
+		"PDF:Producer", "PDF:Author","EXE:LegalCopyright","EXE:CompanyName","Torrent:Creator", "FlashPix:Tag_AuthorEmail", "FlashPix:Tag_AuthorEmailDisplayName")
 
 	authordir=(ROOT_DIR + "/exifdata/stats/authors/")
 
@@ -152,8 +152,7 @@ def statshtml():
 	#Filters through media to find only files with Software data		
 
 	softwaredir = (ROOT_DIR + "/exifdata/stats/software/")
-	softwaretags = ("EXIF:Software","PNG:Software","FlashPix:Software","XML:Application", 
-		"FlashPix:Software", "PDF:Producer",  "RIFF:Software")
+	softwaretags = ("EXIF:Software","PNG:Software","FlashPix:Software","XML:Application", "FlashPix:Software", "PDF:Producer",  "RIFF:Software")
 
 	try:
 		os.chdir(jsonalldir)
@@ -183,8 +182,8 @@ def statshtml():
 	#Filters through media to find only files with Device and Model data		
 
 	devicedir = (ROOT_DIR + "/exifdata/stats/devices/")
-	devicetags = ("ICC-header:DeviceAttributes", "ICC_Profile:DeviceModel", 
-		"ICC_Profile:DeviceMfgDesc", "ICC_Profile:DeviceModelDesc", "ExifIFD:LensModel", "EXIF:Model")
+	devicetags = ("ICC-header:DeviceAttributes", "ICC_Profile:DeviceModel", "ICC_Profile:DeviceMfgDesc", "ICC_Profile:DeviceModelDesc", 
+		"ExifIFD:LensModel", "EXIF:Model", "ICC_Profile:MakeAndModel")
 
 	try:
 		os.chdir(jsonalldir)
