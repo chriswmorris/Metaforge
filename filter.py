@@ -190,9 +190,32 @@ def EXEfilter():
 	for exefile in os.listdir("."):
 		if ".txt" in exefile:
 			shutil.move(exesrc + exefile, exedest)
+
 	
 def MKVfilter():
-	pass
+	mkvtags=("Matroska:MuxingApp","Matroska:WritingApp","Matroska:Duration","Matroska:TrackType","Matroska:Title","Matroska:AudioSampleRate",
+	"Matroska:VideoFrameRate","Matroska:VideoCodecID","Matroska:ImageWidth","Matroska:ImageHeight","Composite:ImageSize","Composite:Megapixels")
+
+	mkvdest = ROOT_DIR + "/exifdata/filtered"
+	mkvsrc = ROOT_DIR + "/exifdata/json/mkv/"
+
+	os.chdir(mp3src)
+	for mkvfile in os.listdir("."):
+		with open(mkvfile) as omkvfile:
+			basemkv = os.path.basename(mkvfile)
+			with open(os.path.splitext(basemkv)[0]+".txt","w") as mkv_filename:
+				for line in omkvfile:
+					for tag in mkvtags:
+						if tag in line:
+							mkv_filename.write(line)
+
+	os.chdir(mkvsrc)						
+	for mkvfile in os.listdir("."):
+		if ".txt" in mkvfile:
+			shutil.move(mkvsrc + mkvfile, mkvdest)
+
+
+
 
 def MP3filter():
 	
@@ -222,10 +245,55 @@ def MP3filter():
 
 
 def MP4filter():
-	pass
+	mp4tags=("QuickTime:CreateDate","QuickTime:Duration","QuickTime:GraphicsMode","QuickTime:CompressorName","QuickTime:MajorBrand","QuickTime:MediaLanguageCode",
+	"QuickTime:HandlerDescription","QuickTime:HandlerVendorID","XMP:CreateDate","XMP:VideoFieldOrder","XMP:HistorySoftwareAgent","XMP:XMPToolkit",
+	"XMP:PantryHistorySoftwareAgent","XMP:WindowsAtomUncProjectPath","XMP:CreatorTool","XMP:MacAtomPosixProjectPath")
+
+
+	mp4dest = ROOT_DIR + "/exifdata/filtered"
+	mp4src = ROOT_DIR + "/exifdata/json/mp4/"
+
+	os.chdir(mp4src)
+	for mp4file in os.listdir("."):
+		with open(mp4file) as omp4file:
+			basemp4 = os.path.basename(mp4file)
+			with open(os.path.splitext(basemp4)[0]+".txt","w") as mp4_filename:
+				for line in omp4file:
+					for tag in mp4tags:
+						if tag in line:
+							mp4_filename.write(line)
+
+	os.chdir(mp4src)						
+	for mp4file in os.listdir("."):
+		if ".txt" in mp4file:
+			shutil.move(mp4src + mp4file, mp4dest)
+	
 
 def HTMLfilter():
-	pass
+
+	htmltags=("HTML:Title","HTML:Description","HTML:twitterCard","HTML:Robots","HTML:twitterTitle","HTML:twitterDescription","HTML:twitterUrl","HTML:twitterImage",
+	"HTML:googleSiteVerification","HTML:swiftPageName","HTML:msapplicationTileImage","HTML:hostname","HTML:googleAnalytics","HTML:requestId","HTML:userLogin",
+	"HTML:expectedHostname","HTML:jsProxySiteDetectionPayload","HTML:enabledFeatures","HTML:browserStatsUrl","HTML:browserErrorsUrl","HTML:themeColor","HTML:mobileWebAppCapable",
+	"HTML:Keywords","HTML:csrfToken","HTML:themeColor")
+
+
+	htmldest = ROOT_DIR + "/exifdata/filtered"
+	htmlsrc = ROOT_DIR + "/exifdata/json/html/"
+
+	os.chdir(htmlsrc)
+	for htmlfile in os.listdir("."):
+		with open(htmlfile) as ohtmlfile:
+			basehtml = os.path.basename(htmlfile)
+			with open(os.path.splitext(basehtml)[0]+".txt","w") as html_filename:
+				for line in ohtmlfile:
+					for tag in htmltags:
+						if tag in line:
+							html_filename.write(line)
+
+	os.chdir(htmlsrc)						
+	for htmlfile in os.listdir("."):
+		if ".txt" in htmlfile:
+			shutil.move(htmlsrc + htmlfile, htmldest)
 
 def ODPfilter():
 
@@ -290,7 +358,33 @@ def PPTXfilter():
 
 
 def ODSfilter():
-	pass
+	odstags=("XMP:About","XMP:CreatorTool","XMP:DateAcquired","XMP-dc:Creator","XMP-dc:Rights","XMP:DocumentID","XMP-exif:UserComment","XMP:InstanceID",
+	"XMP-photoshop:DateCreated","XMP-xmp:CreatorTool","XMP-xmpMM:DerivedFromDocumentID","XMP:XMPToolkit","XMP-x:XMPToolkit","XMP:Creator","XMP:Compression",
+	"XMP:CreateDate","XMP:CreatorTool","XMP:DateAcquired","XMP:DateCreated","XMP-dc:Creator","XMP-dc:Rights","XMP:DerivedFromDocumentID","XMP:DerivedFromInstanceID",
+	"XMP:DerivedFromOriginalDocumentID","XMP:DocumentID","XMP-exif:UserComment","XMP:HistoryAction","XMP:HistoryChanged","XMP:HistoryInstanceID","XMP:HistoryParameters",
+	"XMP:HistorySoftwareAgent","XMP:HistoryWhen","XMP:ICCProfileName","XMP:InstanceID","XMP:Marked","XMP:MetadataDate","XMP:ModifyDate","XMP:Orientation","XMP-photoshop:DateCreated","XMP:Title",
+	"XMP:TransmissionReference","XMP:UserComment","XMP-xmp:CreatorTool","XMP-xmpMM:DerivedFromDocumentID","XMP:XMPToolkit","XMP:XMPToolkit","XMP-x:XMPToolkit",
+	"XMP:Date","XMP:Editing-duration","XMP:Editing-cycles","XMP:Document-statisticTable-count","XMP:Document-statisticCell-count","XMP:Document-statisticObject-count",
+	"XMP:Generator")
+
+
+	odsdest = ROOT_DIR + "/exifdata/filtered"
+	odssrc = ROOT_DIR + "/exifdata/json/ods/"
+
+	os.chdir(odssrc)
+	for odsfile in os.listdir("."):
+		with open(odsfile) as oodsfile:
+			baseods = os.path.basename(odsfile)
+			with open(os.path.splitext(baseods)[0]+".txt","w") as ods_filename:
+				for line in oodsfile:
+					for tag in odstags:
+						if tag in line:
+							ods_filename.write(line)
+
+	os.chdir(odssrc)						
+	for odsfile in os.listdir("."):
+		if ".txt" in odsfile:
+			shutil.move(odssrc + odsfile, odsdest)
 
 def PDFfilter():
 
@@ -301,7 +395,7 @@ def PDFfilter():
 	"PDF:PageCount","PDF:Language","PDF:PTEX_Fullbanner","PDF:PXCViewerInfo")
 
 
-	pdftdest = ROOT_DIR + "/exifdata/filtered"
+	pdfdest = ROOT_DIR + "/exifdata/filtered"
 	pdftsrc = ROOT_DIR + "/exifdata/json/pdf/"
 
 	os.chdir(pdfsrc)
@@ -322,7 +416,29 @@ def PDFfilter():
 
 
 def SVGfilter():
-	pass
+	svgtags=("SVG:Xmlns""SVG:ID""SVG:ImageHeight","SVG:ImageWidth","SVG:Version","SVG:Docname","SVG:Output_extension","SVG:Export-filename","SVG:MetadataID",
+	"XMP:WorkFormat","XMP:WorkType","XMP:WorkDescription","XMP:WorkTitle","XMP:WorkPublisherAgentTitle","XMP:WorkCreatorAgentTitle","XMP:WorkRightsAgentTitle",
+	"XMP:WorkLicense","XMP:WorkLanguage","XMP:About","XMP:LicensePermits")
+
+
+	svgdest = ROOT_DIR + "/exifdata/filtered"
+	svgsrc = ROOT_DIR + "/exifdata/json/svg/"
+
+	os.chdir(svgsrc)
+	for svgfile in os.listdir("."):
+		with open(svgfile) as osvgfile:
+			basesvg = os.path.basename(svgfile)
+			with open(os.path.splitext(basesvg)[0]+".txt","w") as svg_filename:
+				for line in osvgfile:
+					for tag in svgtags:
+						if tag in line:
+							svg_filename.write(line)
+
+	os.chdir(svgsrc)						
+	for svgfile in os.listdir("."):
+		if ".txt" in svgfile:
+			shutil.move(svgsrc + svgfile, svgdest)
+	
 
 def TORRENTfilter():
 
@@ -421,7 +537,31 @@ def DLLfilter():
 	
 
 def XLSXfilter():
-	pass
+
+	xlsxtags=("XML:LastModifiedBy","XML:CreateDate","XML:ModifyDate","XML:Application","XML:DocSecurity","XML:HeadingPairs",
+	"XML:TitlesOfParts","XML:SharedDoc","XML:AppVersion","XML:Keywords","XML:Company","XMP:Title","XMP:Subject","XMP:Creator",
+	"XMP:Description","FlashPix:Author","FlashPix:CodePage","FlashPix:LastModifiedBy","FlashPix:Software","FlashPix:CreateDate",
+	"FlashPix:ModifyDate","FlashPix:Security","FlashPix:Company","FlashPix:TitleOfParts","FlashPix:HeadingPairs","FlashPix:SharedDoc",
+	"FlashPix:AppVersion","FlashPix:Tag_EmailSubject","FlashPix:Tag_AuthorEmail","FlashPix:Tag_AuthorEmailDisplayName","XML:Application")
+
+	xlsxdest = ROOT_DIR + "/exifdata/filtered"
+	xlsxsrc = ROOT_DIR + "/exifdata/json/xlsx/"
+
+	os.chdir(xlsxsrc)
+	for xlsxfile in os.listdir("."):
+		with open(xlsxfile) as oxlsxfile:
+			basexlsx = os.path.basename(xlsxfile)
+			with open(os.path.splitext(basexlsx)[0]+".txt","w") as xlsx_filename:
+				for line in oxlsxfile:
+					for tag in xlsxtags:
+						if tag in line:
+							xlsx_filename.write(line)
+
+	os.chdir(xlsxsrc)						
+	for xlsxfile in os.listdir("."):
+		if ".txt" in xlsxfile:
+			shutil.move(xlsxsrc + xlsxfile, xlsxdest)
+	
 
 def filterexec():
 	try:
