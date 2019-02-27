@@ -1,4 +1,8 @@
 # Metaforge #
+
+<img src="https://raw.githubusercontent.com/chriswmorris/Metaforge/master/Template_Data/img/logo.png" width="250 height=300" title="Metaforge Logo">
+
+
 *"A metadata analyzer that creates dynamic reports with a unique filter"*
 <br><br>
 https://chriswmorris.github.io/Metaforge/
