@@ -69,7 +69,7 @@ def JPEGfilter():
 
 def PNGfilter():
 
-	pngtags = ("File:FileModifyDate',Composite:CircleOfConfusion',  'Composite:FocalLength35efl',  'Composite:FOV',  'Composite:GPSDateTime',  'Composite:GPSLatitude',
+	pngtags = ('File:FileModifyDate','Composite:CircleOfConfusion',  'Composite:FocalLength35efl',  'Composite:FOV',  'Composite:GPSDateTime',  'Composite:GPSLatitude',
 	  'Composite:GPSLongitude',  'Composite:GPSPosition',  'Composite:HyperfocalDistance',  'Composite:ImageSize',  'Composite:LensID',  
 	  'Composite:ShutterSpeed',  'Composite:SubSecCreateDate',  'Composite:SubSecDateTimeOriginal',	  'Composite:SubSecModifyDate',  'Ducky:Quality',  
 	  'File:Comment',  'File:FileAccessDate',  'File:FileInodeChangeDate', 'GPSAltitude',  'GPSDateStamp',  'GPSDOP',  'GPSLatitude',  
@@ -104,6 +104,7 @@ def PNGfilter():
 	for pngfile in os.listdir("."):
 		if ".txt" in pngfile:
 			shutil.move(pngsrc + pngfile, pngdest)						
+						
 
 
 def GIFfilter():
