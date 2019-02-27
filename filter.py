@@ -20,7 +20,7 @@ https://www.miniwebtool.com/remove-line-breaks/
 
 def JPEGfilter():
 	#Load list of tags as a tuple 
-	jpegtags = ('File:FileName', 'Adobe:APP14Flags0',  'Adobe:DCTEncodeVersion',  'Composite:CircleOfConfusion',  'Composite:FocalLength35efl',
+	jpegtags = ('Adobe:APP14Flags0',  'Adobe:DCTEncodeVersion',  'Composite:CircleOfConfusion',  'Composite:FocalLength35efl',
 	  'Composite:FOV',  'Composite:GPSDateTime',  'Composite:GPSLatitude',  'Composite:GPSLongitude',  'Composite:GPSPosition', 
 	  'Composite:HyperfocalDistance',  'Composite:ImageSize',  'Composite:LensID',  'Composite:ShutterSpeed',  'Composite:SubSecCreateDate',  
 	  'Composite:SubSecDateTimeOriginal',	  'Composite:SubSecModifyDate',  'Ducky:Quality',  'EXIF:ApertureValue',  'EXIF:Copyright',  
@@ -69,7 +69,7 @@ def JPEGfilter():
 
 def PNGfilter():
 
-	pngtags = ('File:FileName', 'Composite:CircleOfConfusion',  'Composite:FocalLength35efl',  'Composite:FOV',  'Composite:GPSDateTime',  'Composite:GPSLatitude',
+	pngtags = ("File:FileModifyDate',Composite:CircleOfConfusion',  'Composite:FocalLength35efl',  'Composite:FOV',  'Composite:GPSDateTime',  'Composite:GPSLatitude',
 	  'Composite:GPSLongitude',  'Composite:GPSPosition',  'Composite:HyperfocalDistance',  'Composite:ImageSize',  'Composite:LensID',  
 	  'Composite:ShutterSpeed',  'Composite:SubSecCreateDate',  'Composite:SubSecDateTimeOriginal',	  'Composite:SubSecModifyDate',  'Ducky:Quality',  
 	  'File:Comment',  'File:FileAccessDate',  'File:FileInodeChangeDate', 'GPSAltitude',  'GPSDateStamp',  'GPSDOP',  'GPSLatitude',  
@@ -108,7 +108,7 @@ def PNGfilter():
 
 def GIFfilter():
 	
-	giftags =("File:FileType", "File:Comment" ,"HTML:HTTPEquivXUaCompatible","HTML:viewport","HTML:twitterAccount_id","HTML:twitterCard",
+	giftags =("File:FileModifyDate","File:Comment" ,"HTML:HTTPEquivXUaCompatible","HTML:viewport","HTML:twitterAccount_id","HTML:twitterCard",
 	"HTML:twitterTitle","HTML:twitterCreator","HTML:twitterSite","HTML:twitterDescription","HTML:twitterImageSrc","HTML:twitterDomain",
 	"HTML:twitterPlayer","HTML:Rating","HTML:Description","HTML:Author","HTML:Keywords","HTML:pinterest","HTML:Title","GIF:GIFVersion",
 	"GIF:AnimationIterations","GIF:FrameCount","GIF:Duration","HTML:Copyright","HTML:msapplicationTileColor","HTML:msapplicationTileImage",
@@ -193,7 +193,7 @@ def EXEfilter():
 
 	
 def MKVfilter():
-	mkvtags=("Matroska:MuxingApp","Matroska:WritingApp","Matroska:Duration","Matroska:TrackType","Matroska:Title","Matroska:AudioSampleRate",
+	mkvtags=("File:FileModifyDate","Matroska:MuxingApp","Matroska:WritingApp","Matroska:Duration","Matroska:TrackType","Matroska:Title","Matroska:AudioSampleRate",
 	"Matroska:VideoFrameRate","Matroska:VideoCodecID","Matroska:ImageWidth","Matroska:ImageHeight","Composite:ImageSize","Composite:Megapixels")
 
 	mkvdest = ROOT_DIR + "/exifdata/filtered"
@@ -219,8 +219,7 @@ def MKVfilter():
 
 def MP3filter():
 	
-	mp3tags=('File:FileName','File:Directory','File:FileSize','File:FilePermissions','File:FileType','File:FileTypeExtension',
-		'File:MIMEType','File:ID3Size','MPEG:MPEGAudioVersion','MPEG:AudioLayer','MPEG:AudioBitrate','MPEG:SampleRate',
+	mp3tags=('File:ID3Size','MPEG:MPEGAudioVersion','MPEG:AudioLayer','MPEG:AudioBitrate','MPEG:SampleRate',
 		'MPEG:ChannelMode','MPEG:MSStereo','MPEG:IntensityStereo','MPEG:CopyrightFlag','MPEG:OriginalMedia','MPEG:Emphasis',
 		'ID3:Title','ID3:Artist','ID3:Album','ID3:Year','ID3:Comment','ID3:Genre','Composite:DateTimeOriginal','Composite:Duration')
 
@@ -326,7 +325,7 @@ def ODPfilter():
 
 
 def PPTXfilter():
-	pptxtags = ('File:FileName',  'File:FileModifyDate',  'File:FileAccessDate',  'File:FileInodeChangeDate',  'FlashPix:CurrentUser',  
+	pptxtags = ('File:FileModifyDate',  'File:FileAccessDate',  'File:FileInodeChangeDate',  'FlashPix:CurrentUser',  
 		'FlashPix:Title',  'FlashPix:Author',  'FlashPix:Template',  'FlashPix:LastModifiedBy',  'FlashPix:RevisionNumber',  'FlashPix:Software',
 		'FlashPix:TotalEditTime',  'FlashPix:CreateDate',  'FlashPix:ModifyDate',  'FlashPix:Words',  'FlashPix:PresentationTarget', 
 		'FlashPix:Company',  'FlashPix:Bytes',  'FlashPix:Paragraphs',  'FlashPix:Slides',  'FlashPix:Notes',  'FlashPix:HiddenSlides',  
@@ -416,7 +415,7 @@ def PDFfilter():
 
 
 def SVGfilter():
-	svgtags=("SVG:Xmlns""SVG:ID""SVG:ImageHeight","SVG:ImageWidth","SVG:Version","SVG:Docname","SVG:Output_extension","SVG:Export-filename","SVG:MetadataID",
+	svgtags=("SVG:Xmlns","SVG:ID","SVG:ImageHeight","SVG:ImageWidth","SVG:Version","SVG:Docname","SVG:Output_extension","SVG:Export-filename","SVG:MetadataID",
 	"XMP:WorkFormat","XMP:WorkType","XMP:WorkDescription","XMP:WorkTitle","XMP:WorkPublisherAgentTitle","XMP:WorkCreatorAgentTitle","XMP:WorkRightsAgentTitle",
 	"XMP:WorkLicense","XMP:WorkLanguage","XMP:About","XMP:LicensePermits")
 
@@ -442,7 +441,7 @@ def SVGfilter():
 
 def TORRENTfilter():
 
-	torrenttags = ('File:FileType','Torrent:Announce','Torrent:CreateDate','Torrent:Length','Torrent:Name','Torrent:PieceLength','Torrent:Comment','Torrent:Creator','Torrent:URLList',
+	torrenttags = ('Torrent:Announce','Torrent:CreateDate','Torrent:Length','Torrent:Name','Torrent:PieceLength','Torrent:Comment','Torrent:Creator','Torrent:URLList',
 	'Torrent:Private','Torrent:AnnounceList','Torrent:File','Torrent:FileLength')
 
 	torrentdest = ROOT_DIR + "/exifdata/filtered"
@@ -658,18 +657,4 @@ def filterexec():
 		PNGfilter()
 	except:
 		pass
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-			
+		
