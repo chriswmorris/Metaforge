@@ -44,27 +44,59 @@
 
         <h1>What is "metadata"?</h1>
 
-        <p>To put it simply, metadata is just information about data. </p>
+        <p>To put it simply, metadata is just information about data. The information comes from the tags that capture valuable information about each specific file. Each file has can have many different tags of data that can be retreived for multiple purposes. </p>
+        <p>The uses for metadata are endless and can prove valuable to those in the information security fields for pentesting and gathering information, like who created the file and what software was used to edit it.</p>
 
-        <h2>Headline 2</h2>
-
-        <p> </p>
-
-        <h3>Headline 3</h3>
-
-        <p> </p>
-
-        <h4>Headline 4</h4>
-
-        <p> </p>
+        <h1>Metaforge Checklist</h1>
+        <ul>
+          <li>Must have a Unix-based Operating System (Arch, Debian, and RHEL Linux distros have been tested and also Mac OSX) </li>
+          <li>Must have at least Python3.5 or higher </li>
+          <li>Must place all data you wish to analyze in the /media directory. <strong>Cannot place folders.</strong> </li>
+        </ul>
         
-        <h5>Headline 5</h5>
+        <h2>Install Requirements</h2>
+        <h3>1.1 Install Exiftool</h3>
+        <p><em>In order for Metaforge to work, you must install exiftool first. Also, if you install the requirements.txt first, it won’t work because pyexifinfo requires exiftool to install.</em></p>
+        <p>So to install exiftool, run the following based on your OS.</p>
+        <p><em>Note: you might need to run these commands as root! So run…</em></p>
+        <code>sudo apt/yum/pacman...</code>
 
-        <p> </p>
         
-        <h6>Headline 6</h6>
+        <h5>Debian-based</h5>
+        <code>apt install libimage-exiftool-perl</code>
+        
+        <h5>RHEL-based</h5>
+        <code>yum install perl-Image-ExifTool</code>
+        
+        <h5>Arch Linux</h5>
+        <code>pacman -S perl-image-exiftool</code>
+                
+        <h5>Mac OSX</h5>
+        <code>brew install exiftool</code>
+        
+        
+        <h3>1.2 Install Dependencies</h3>
 
-        <p> </p>
+        <p>Install the libraries that we used to create Metaforge. Make sure that you’re using pip3! If you don’t know how, here is some help. </p>
+        <ul>
+        <li>https://www.tecmint.com/install-pip-in-linux/</li>
+        </ul>
+        <code>pip3 install -r requirements.txt</code>
+        
+        <p><em>If this doesn’t work, try to install each individual package and report the error message you got and we can help!</em></p>
+
+        <h2>Running Metaforge</h2>
+        <ol>
+          <li>Place the files you wish to analyze in the /media directory</li>
+          <li>Run metaforge.py</li>
+        </ol>
+        <code>python3 metaforge.py</code>
+        
+        <p><em>Note: If you want to make it easier to run multiple times, run these commands…</em></p>
+        
+
+
+
 
         <p>Roses are <em>emphasized</em></br>
         Violets are <strong>strong</strong></p>
