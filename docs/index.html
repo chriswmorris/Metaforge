@@ -41,18 +41,25 @@
 
         <h1>Introduction</h1>
         <p>This GitHub Page is dedicated to our Senior Design Project that will be presented at the IT expo. We created this site to provide more information about metadata, provide a download link for Metaforge, provide requirements for the installation, as well as a step-by-step guide on how to use Metaforge.</p>
-
+        <br><br><br>
+        
+        
         <h1>What is "metadata"?</h1>
 
         <p>To put it simply, metadata is just information about data. The information comes from the tags that capture valuable information about each specific file. Each file has can have many different tags of data that can be retreived for multiple purposes. </p>
         <p>The uses for metadata are endless and can prove valuable to those in the information security fields for pentesting and gathering information, like who created the file and what software was used to edit it.</p>
-
+        <br><br><br>
+        
+        
+        
         <h1>Metaforge Checklist</h1>
         <ul>
           <li>Must have a Unix-based Operating System (Arch, Debian, and RHEL Linux distros have been tested and also Mac OSX) </li>
           <li>Must have at least Python3.5 or higher </li>
           <li>Must place all data you wish to analyze in the /media directory. <strong>Cannot place folders.</strong> </li>
         </ul>
+        <br><br><br>
+        
         
         <h2>Install Requirements</h2>
         <h3>1.1 Install Exiftool</h3>
@@ -73,7 +80,7 @@
                 
         <h5>Mac OSX</h5>
         <code>brew install exiftool</code>
-        
+        <br><br>
         
         <h3>1.2 Install Dependencies</h3>
 
@@ -84,7 +91,8 @@
         <code>pip3 install -r requirements.txt</code>
         
         <p><em>If this doesn’t work, try to install each individual package and report the error message you got and we can help!</em></p>
-
+        <br><br><br>
+        
         <h2>Running Metaforge</h2>
         <ol>
           <li>Place the files you wish to analyze in the /media directory</li>
@@ -93,11 +101,15 @@
         <code>python3 metaforge.py</code>
         
         <p><em>Note: If you want to make it easier to run multiple times, run these commands…</em></p>
-        
+        <code>chmod +x metaforge.py</code>
+        <code>./metaforge.py</code>
+        <br><br><br>
 
 
 
 
+
+        <!-- HEADER 
         <p>Roses are <em>emphasized</em></br>
         Violets are <strong>strong</strong></p>
 
@@ -208,6 +220,7 @@ end
 
       </section>
     </div>
+    -->
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
