@@ -1,15 +1,23 @@
 
-/*
-Help:;
-
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-
-*/
-
-
-
 
 body {font-family: Arial, Helvetica, sans-serif;}
+
+
+#header{
+
+	background-image: url('../img/header.png');
+	background-size: cover;
+	color: white;
+
+}
+
+#logo{
+	height: 150px;
+	width: 250px;
+	float: right;
+
+
+}
 
 /* NAVBAR */
 
@@ -22,24 +30,22 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 	margin: 0;
 	overflow: hidden;
-	background-color: lightgrey;
+	background-color:white;
 	display: block;
 	width: 100%;
-	word-spacing:120px;
-}
+	background-color: #484848;
+	}
 
 #nav-li{
 
 	text-align: center;
-
-
 
 }
 
 
 
 /* WRAPPER PORTION */
-span{
+	span{
 
 display: block;
 
@@ -47,6 +53,7 @@ display: block;
 
 #wrapper{
 
+	background-color: #d7dbdd;
 
 
 }
@@ -72,17 +79,19 @@ display: block;
 
 	padding: 10px;
 
+
 }
 
 #filetypechart-box{
 	column-count: 2;
-	padding: 10px;
+	padding: 20px;
 	position: relative;
 	overflow-x: hidden;
 	line-height: 1%;
 	width: 400px;
-  	height: 350px;
+  	height: 380px;
   	border: 3px solid black; 
+  	background-color: white;
   	
 }
 
@@ -101,6 +110,7 @@ display: block;
 	padding: 20px;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	background-color: white;
 
 
 }
@@ -116,6 +126,7 @@ display: block;
 	border: 3px solid black; 
 	width: 400px;
 	height: 200px;
+	background-color: white;
 
 
 }
@@ -139,6 +150,7 @@ display: block;
 	border-bottom: 3px solid black;
 	width: 520px;
 	position: relative;
+	background-color: white;
 	
 }
 
@@ -160,6 +172,7 @@ display: block;
 	border-bottom: 3px solid black;
 	width: 520px;
 	position: relative;
+	background-color: white;
 
 
 }
@@ -179,10 +192,9 @@ display: block;
 	border-left: 3px solid black;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
-
 	width: 520px;
 	position: relative;
-
+	background-color: white;
 
 }
 
@@ -200,6 +212,7 @@ display: block;
 	border-bottom: 3px solid black;
 	width: 520px;
 	position: relative;
+	background-color: white;
 
 }
 
@@ -217,5 +230,94 @@ display: block;
 	border-bottom: 3px solid black;
 	width: 520px;
 	position: relative;
+	background-color: white;
 
 }
+
+
+
+/* FILTER PAGE*/
+
+#filtertitle{
+
+	background-color: white;
+	border-color: black;
+	border-style: solid;
+	margin-right: 800px;
+	margin-left: 10px;
+}
+
+
+
+#filtered{
+
+	margin-left: 10px;
+	columns: 2;
+
+
+
+}
+
+#filtered-box{
+
+	background-color: white;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+	overflow: scroll;
+
+
+
+}
+
+
+/* ALL METADATA PAGE*/
+
+#exifraw{
+
+	columns: 2;
+
+	
+
+}
+
+
+#exifraw-box{
+
+	overflow: scroll;
+	text-align: center;
+}
+
+
+/*BUTTONS*/
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#e92626), to(#373737));
+   background: -webkit-linear-gradient(top, #e92626, #373737);
+   background: -moz-linear-gradient(top, #e92626, #373737);
+   background: -ms-linear-gradient(top, #e92626, #373737);
+   background: -o-linear-gradient(top, #e92626, #373737);
+   padding: 10px 30px;
+   margin-right: 55px;
+   -webkit-border-radius: 32px;
+   -moz-border-radius: 32px;
+   border-radius: 32px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 18px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #373737;
+   background: #373737;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #373737;
+   background: #373737;
+   }
