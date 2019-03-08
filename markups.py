@@ -1,4 +1,4 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 
 import os, os.path, sys
 import dominate
@@ -21,26 +21,26 @@ def statshtml():
 # 6) Device/manufact. model
 # 7) Top 5 largest files
 # Then Generate the html report
-	
 
 	# ADD CUSTOM TAGS HERE:
 	# The best way to look for tags is to run exiftool -j -G <filename> 
 	# FORMAT: add "" and a comma to separate them. Example: "Composite:GPSPosition","EXIF:GPSAltitude"
 	# 
-	# Leave the PLACEHOLDER there if there's only one tag
-	# Delete "DELETE_ME" when entering in another tag
-	# Delete the PLACEHOLDER and DELETE_ME when you have more than 1 tag
+	# Leave the PLACEHOLDER there
 
-	customtags = ("PLACEHOLDER", "DELETE_ME")
+
+
+
+	customtags = ("PLACEHOLDER", "PLACEHOLDER")
 
 	#################################################################################
 
 	# FILETYPE CHART
 	# Stats about the number of files in each supported filetype
-	# Supported filetypes: dll, docx, exe, gif, html, jpeg, mkv, mp3, mp4, odp, ods, pdf, png, pptx, svg, torrent, wav, xlsx, zip
+	# Supported filetypes: dll, docx, exe, gif, html, jpeg, mkv, mp3, mp4, odp, odt ods, pdf, png, pptx, svg, torrent, wav, xlsx, zip
 	jsonexifdir = (ROOT_DIR + "/exifdata/json/")
 	statsdir = (ROOT_DIR + "/exifdata/stats/")
-	jsondirs = ("dll", "docx", "exe", "gif", "html", "jpeg", "mkv", "mp3", "mp4", "odp", "ods", "pdf",
+	jsondirs = ("dll", "docx", "exe", "gif", "html", "jpeg", "mkv", "mp3", "mp4", "odp","odt", "ods", "pdf",
 	 "png", "pptx", "svg", "torrent", "wav", "xlsx", "zip")
 
 
@@ -281,23 +281,32 @@ def statshtml():
 	#Creates <head>
 	with doc.head:
 		link(rel='stylesheet', href="Template_Data/css/main.css")
+		link(rel='icon', type="image/png", href="Template_Data/img/favicon.png")
 		script(type='text/javascript', src="Template_Data/js/main.js")
+
 		
 	#Creates <body>
 	with doc:
-		h1("Metaforge")
-		h3("Home/Statistics")
-		with div(id='metaforge-credits'):
-			p("Created Chris Morris and Collin Mockbee")
-			p("https://github.com/chriswmorris/Metaforge")
-		br()
+		with div(id='header'):
+			img(src='Template_Data/img/title.png')
+			img(id='logo',src='Template_Data/img/logo.png')
+			h2("Home/Statistics")
+			with div(id='metaforge-credits'):
+				p("Created by Chris Morris and Collin Mockbee")
+				p("https://github.com/chriswmorris/Metaforge")
+			br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
 				with div(id='nav-li'):
-					a('Home/Stats', href='index.html' % ['index'])
-					a('Filtered_Metadata', href='filters.html' % ['filters'])
-					a('All_Metadata', href='rawmeta.html' % ['rawmeta'])
-					a('Hexadecimal_View', href='hexdump.html' % ['hexdump'])
+					
+					img(src='Template_Data/img/home.png',width="35px", height="35px")
+					a('Home/Stats' , cls='button', href='index.html' % ['index'])
+					img(src='Template_Data/img/filter.png', width="35px", height="35px")
+					a('Filtered Metadata',cls='button', href='filters.html' % ['filters'])
+					img(src='Template_Data/img/star.png', width="35px", height="35px")
+					a('All Metadata', cls='button',href='rawmeta.html' % ['rawmeta'])
+					img(src='Template_Data/img/dealwithit.png', width="85px", height="25px")
+					a('Hexadecimal View', cls='button', href='hexdump.html' % ['hexdump'])
 
 			with div(id='toprow'):
 				with div(id='filetypechart'):
@@ -341,6 +350,20 @@ def statshtml():
 			br()			
 			hr()		
 			with div(id='secondrow'):
+				with div(id='customchart'):
+					h4("Custom Tags")
+					with div(id='custom-box'):
+						os.chdir(customdir)
+						for customfile in os.listdir("."):
+							customfilename = os.path.splitext(customfile)[0]
+							custom_read = open(customfile, 'r')
+							h4(customfilename)
+							p(custom_read.readline())
+							for custom_line in custom_read:
+								p(custom_read.readlines(8))
+							br()
+
+					os.chdir(ROOT_DIR)
 				with div(id='geolocationschart'):
 					h4("Geolocations")
 					with div(id='geolocation-box'):
@@ -354,6 +377,25 @@ def statshtml():
 								p(gfile_read.readlines(1))
 							br()
 					os.chdir(ROOT_DIR)	
+
+				
+
+				
+
+			with div(id='thirdrow'):
+				with div(id='devicechart'):
+					h4("Devices/Models")
+					with div(id='device-box'):
+						os.chdir(devicedir)
+						for softwfile in os.listdir("."):
+							softfilename = os.path.splitext(softwfile)[0]
+							sfile_read = open(softwfile, 'r')
+							h4(softfilename)
+							p(sfile_read.readline())
+							for soft_line in sfile_read:
+								p(sfile_read.readlines(8))
+							br()
+					os.chdir(ROOT_DIR)
 
 				with div(id='authorchart'):
 					h4("Authors/Companies/etc")
@@ -382,34 +424,7 @@ def statshtml():
 							br()
 					os.chdir(ROOT_DIR)
 
-			with div(id='thirdrow'):
-				with div(id='devicechart'):
-					h4("Devices/Models")
-					with div(id='device-box'):
-						os.chdir(devicedir)
-						for softwfile in os.listdir("."):
-							softfilename = os.path.splitext(softwfile)[0]
-							sfile_read = open(softwfile, 'r')
-							h4(softfilename)
-							p(sfile_read.readline())
-							for soft_line in sfile_read:
-								p(sfile_read.readlines(8))
-							br()
-					os.chdir(ROOT_DIR)
-
-				with div(id='customchart'):
-					h4("Custom Tags")
-					with div(id='custom-box'):
-						os.chdir(customdir)
-						for customfile in os.listdir("."):
-							customfilename = os.path.splitext(customfile)[0]
-							custom_read = open(customfile, 'r')
-							h4(customfilename)
-							p(custom_read.readline())
-							for custom_line in custom_read:
-								p(custom_read.readlines(8))
-							br()
-					os.chdir(ROOT_DIR)
+				
 
 
 
@@ -427,39 +442,59 @@ def filtershtml():
 	#Creates <head>
 	with doc.head:
 		link(rel='stylesheet', href="Template_Data/css/main.css")
+		link(rel='icon', type="image/png", href="Template_Data/img/favicon.png")
 		script(type='text/javascript', src="Template_Data/js/main.js")
-		
+
 	#Creates <body>
 	with doc:
-		h1("Metaforge")
-		h3("Filtered Metadata")
-		with div(id='metaforge-credits'):
-			p("Created Chris Morris and Collin Mockbee")
-			p("https://github.com/chriswmorris/Metaforge")
-		br()
+		with div(id='header'):
+			img(src='Template_Data/img/title.png')
+			img(id='logo',src='Template_Data/img/logo.png')
+			h2("Home/Statistics")
+			with div(id='metaforge-credits'):
+				p("Created by Chris Morris and Collin Mockbee")
+				p("https://github.com/chriswmorris/Metaforge")
+			br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
 				with div(id='nav-li'):
-					a('Home/Stats', href='index.html' % ['index'])
-					a('Filtered_Metadata', href='filters.html' % ['filters'])
-					a('All_Metadata', href='rawmeta.html' % ['rawmeta'])
-					a('Hexadecimal_View', href='hexdump.html' % ['hexdump'])
-	
-			with span(id='filtered'):
+				
+					img(src='Template_Data/img/home.png',width="35px", height="35px")
+					a('Home/Stats' , cls='button', href='index.html' % ['index'])
+					img(src='Template_Data/img/filter.png', width="35px", height="35px")
+					a('Filtered Metadata',cls='button', href='filters.html' % ['filters'])
+					img(src='Template_Data/img/star.png', width="35px", height="35px")
+					a('All Metadata', cls='button',href='rawmeta.html' % ['rawmeta'])
+					img(src='Template_Data/img/dealwithit.png', width="85px", height="25px")
+					a('Hexadecimal View', cls='button', href='hexdump.html' % ['hexdump'])
+
+
+			br()		
+			with div(id='filtertitle'):
+
 				p(b("This section contains a shortened view of all of the metadata from all files."))
 				p("We went through the tags of each individual filetype and selected only noteworthy and important tags so you don't have to look through useless meta ;)")
 				br()
-				br()
-				br()
+			br()
+			br()
+			br()
 
+			with span(id='filtered'):
+				br()
+				br()
 				#loop through all exifoutputs
+
+
 				os.chdir(ROOT_DIR +"/exifdata/filtered/")
 				for file in os.listdir("."):
 					filename = os.path.splitext(file)[0]
 					file_read = open(file, 'r')
-					h3(filename)
-					for line in file_read:
-						p(file_read.readlines(1))
+					with div(id='filtered-box'):
+						h3(filename)
+						p(file_read.readline())
+						for line in file_read:
+							p(file_read.readlines(1))
+					br()
 					br()
 			os.chdir(ROOT_DIR)
 						
@@ -475,32 +510,41 @@ def rawmetahtml():
 	#Creates <head>
 	with doc.head:
 		link(rel='stylesheet', href="Template_Data/css/main.css")
+		link(rel='icon', type="image/png", href="Template_Data/img/favicon.png")
 		script(type='text/javascript', src="Template_Data/js/main.js")
-		
+
 	#Creates <body>
 	with doc:
-		h1("Metaforge")
-		h3("All Metadata")
-		with div(id='metaforge-credits'):
-			p("Created Chris Morris and Collin Mockbee")
-			p("https://github.com/chriswmorris/Metaforge")
-		br()
+		with div(id='header'):
+			img(src='Template_Data/img/title.png')
+			img(id='logo',src='Template_Data/img/logo.png')
+			h2("Home/Statistics")
+			with div(id='metaforge-credits'):
+				p("Created by Chris Morris and Collin Mockbee")
+				p("https://github.com/chriswmorris/Metaforge")
+			br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
 				with div(id='nav-li'):
-					a('Home/Stats', href='index.html' % ['index'])
-					a('Filtered_Metadata', href='filters.html' % ['filters'])
-					a('All_Metadata', href='rawmeta.html' % ['rawmeta'])
-					a('Hexadecimal_View', href='hexdump.html' % ['hexdump'])
+					
+					img(src='Template_Data/img/home.png',width="35px", height="35px")
+					a('Home/Stats' , cls='button', href='index.html' % ['index'])
+					img(src='Template_Data/img/filter.png', width="35px", height="35px")
+					a('Filtered Metadata',cls='button', href='filters.html' % ['filters'])
+					img(src='Template_Data/img/star.png', width="35px", height="35px")
+					a('All Metadata', cls='button',href='rawmeta.html' % ['rawmeta'])
+					img(src='Template_Data/img/dealwithit.png', width="85px", height="25px")
+					a('Hexadecimal View', cls='button', href='hexdump.html' % ['hexdump'])
 
 			with span(id='exifraw'):
 				#loop through all exifoutputs
 				os.chdir(ROOT_DIR +"/exifdata/html/")
 				for filename in os.listdir("."):
 					raw_filename = os.path.splitext(filename)[0]
-					h3(raw_filename)
-					iframe(src="exifdata/html/" + filename,  width="500", height="500")
-					br()
+					with div(id='exifraw-box'):
+						h3(raw_filename)
+						iframe(src="exifdata/html/" + filename,  width="500", height="500")
+						br()
 			os.chdir(ROOT_DIR)
 	with open('rawmeta.html', 'w') as rawmeta:
 		rawmeta.write(doc.render()) 
@@ -513,34 +557,42 @@ def hexmetahtml():
 	#Creates <head>
 	with doc.head:
 		link(rel='stylesheet', href="Template_Data/css/main.css")
+		link(rel='icon', type="image/png", href="Template_Data/img/favicon.png")
 		script(type='text/javascript', src="Template_Data/js/main.js")
-		
+
 	#Creates <body>
 	with doc:
-		h1("Metaforge")
-		h3("Hexadecimal View of the Metadata")
-		with div(id='metaforge-credits'):
-			p("Created Chris Morris and Collin Mockbee")
-			p("https://github.com/chriswmorris/Metaforge")
-		br()
+		with div(id='header'):
+			img(src='Template_Data/img/title.png')
+			img(id='logo',src='Template_Data/img/logo.png')
+			h2("Home/Statistics")
+			with div(id='metaforge-credits'):
+				p("Created by Chris Morris and Collin Mockbee")
+				p("https://github.com/chriswmorris/Metaforge")
+			br()
 		with div(id= 'wrapper'):
 			with div(id='navbar').add(ul()):
 				with div(id='nav-li'):
-					a('Home/Stats', href='index.html' % ['index'])
-					a('Filtered_Metadata', href='filters.html' % ['filters'])
-					a('All_Metadata', href='rawmeta.html' % ['rawmeta'])
-					a('Hexadecimal_View', href='hexdump.html' % ['hexdump'])
+					
+					img(src='Template_Data/img/home.png',width="35px", height="35px")
+					a('Home/Stats' , cls='button', href='index.html' % ['index'])
+					img(src='Template_Data/img/filter.png', width="35px", height="35px")
+					a('Filtered Metadata',cls='button', href='filters.html' % ['filters'])
+					img(src='Template_Data/img/star.png', width="35px", height="35px")
+					a('All Metadata', cls='button',href='rawmeta.html' % ['rawmeta'])
+					img(src='Template_Data/img/dealwithit.png', width="85px", height="25px")
+					a('Hexadecimal View', cls='button', href='hexdump.html' % ['hexdump'])
 
-			with span(id='exifhexdump'):
+			with span(id='exifraw'):
 				#loop through all exifoutputs
 				os.chdir(ROOT_DIR +"/exifdata/hex_html/")
 				for filename in os.listdir("."):
 					raw_filename = os.path.splitext(filename)[0]
-					h3(raw_filename)
-					iframe(src="exifdata/hex_html/" + filename,  width="700", height="500")
-					br()
+					with div(id="exifraw-box"):
+						h3(raw_filename)
+						iframe(src="exifdata/hex_html/" + filename,  width="700", height="500")
+						br()
 			os.chdir(ROOT_DIR)
 					
 	with open('hexdump.html', 'w') as hexdump:
 		hexdump.write(doc.render()) 
-
