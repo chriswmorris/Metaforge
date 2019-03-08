@@ -8,7 +8,7 @@
 #=====================================================
 #
 #
-#@version	1.2 (Finished Edition)
+#@version	1.3 (Pretty Reports Edition)
 #@link		https://github.com/chriswmorris/Metaforge
 #@authors	Chris Morris & Collin Mockbee
 
@@ -40,7 +40,7 @@ def credits():
 	print("")
 	print(Style.BRIGHT+ Fore.BLUE + "Metaforge")
 	print(Fore.WHITE + "A metadata analyzer that creates dynamic reports with a unique filter")
-	print("Version 1.2")
+	print("Version 1.3")
 	print(Style.RESET_ALL)
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
 	print("github.com/chriswmorris/Metaforge")
@@ -153,7 +153,7 @@ def filtering():
 	#2) Filter out the "unimportant tags"
 
 	jsondir = ROOT_DIR + "/exifdata/json/"
-	jsonsubdirs = ['odp', 'png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'zip', 'exe',
+	jsonsubdirs = ['odp', 'png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'odt,' 'zip', 'exe',
 	 'xlsx', 'svg', 'pdf', 'mp4', 'html', 'docx', 'gif', 'wav', 'jpeg', 'mkv']
 
 	print("Now going to sort the JSON into their respective (original) filetype folder")
