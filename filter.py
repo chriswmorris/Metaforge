@@ -104,7 +104,6 @@ def PNGfilter():
 	for pngfile in os.listdir("."):
 		if ".txt" in pngfile:
 			shutil.move(pngsrc + pngfile, pngdest)						
-						
 
 
 def GIFfilter():
@@ -561,6 +560,35 @@ def XLSXfilter():
 	for xlsxfile in os.listdir("."):
 		if ".txt" in xlsxfile:
 			shutil.move(xlsxsrc + xlsxfile, xlsxdest)
+
+
+def ODTfilter():
+
+	odttags=("File:FileModifyDate","XMP:Creation-date","XMP:Date","XMP:Editing-duration","XMP:Editing-cycles","XMP:Generator",
+	"XMP:Document-statisticObject-count","XMP:Language","XMP:Print-date","XMP:User-definedName","XMP:XMPToolkit",
+	"XMP:Creator","XMP:Description","XMP:Title","XMP:CreationDate--Text","XMP:Producer","XMP:CreatorTool","XMP:ModifyDate",
+	"XMP:About","XMP:DateAcquired","XMP-dc:Creator","XMP-dc:Rights","XMP:DocumentID","XMP-exif:UserComment","XMP:InstanceID",
+	"XMP-photoshop:DateCreated","XMP-xmp:CreatorTool","XMP-xmpMM:DerivedFromDocumentID","XMP:XMPToolkit","XMP-x:XMPToolkit")
+
+	odtdest = ROOT_DIR + "/exifdata/filtered"
+	odtsrc = ROOT_DIR + "/exifdata/json/odt/"
+
+	os.chdir(odtsrc)
+	for odtfile in os.listdir("."):
+		with open(odtfile) as oodtfile:
+			baseodt = os.path.basename(odtfile)
+			with open(os.path.splitext(baseodt)[0]+".txt","w") as odt_filename:
+				for line in oodtfile:
+					for tag in odttags:
+						if tag in line:
+							odt_filename.write(line)
+
+	os.chdir(odtsrc)						
+	for odtfile in os.listdir("."):
+		if ".txt" in odtfile:
+			shutil.move(odtsrc + odtfile, odtdest)
+
+
 	
 
 def filterexec():
@@ -656,6 +684,11 @@ def filterexec():
 	
 	try:
 		PNGfilter()
+	except:
+		pass
+
+	try:
+		ODTfilter()
 	except:
 		pass
 		
