@@ -24,7 +24,7 @@ def stageset():
 	authorsdir = ROOT_DIR + "/exifdata/stats/authors"
 	customdir = ROOT_DIR + "/exifdata/stats/custom"
 
-	filetypedir = ['odp', 'png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'zip', 'exe',
+	filetypedir = ['odp', 'odt','png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'zip', 'exe',
 	 'xlsx', 'svg', 'pdf', 'mp4', 'html', 'docx', 'gif', 'wav', 'jpeg', 'mkv', 'all']
 
 	if not os.path.exists(exifdatadir):
@@ -70,7 +70,7 @@ def stageset():
 def checkdelete():
 	jsonpath = ROOT_DIR + "/exifdata/json/"
 	filteredjsonpath = ROOT_DIR + "/exifdata/filtered/" 
-	jsonsubdirs = ['odp', 'png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'zip', 'exe',
+	jsonsubdirs = ['odp', 'odt', 'png', 'mp3', 'dll', 'torrent', 'pptx', 'ods', 'zip', 'exe',
 	 'xlsx', 'svg', 'pdf', 'mp4', 'html', 'docx', 'gif', 'wav', 'jpeg', 'mkv', 'all']
 
 	 #FILTER DIRECTORY
@@ -213,6 +213,11 @@ def jsonsort():
 
 					elif p['File:FileTypeExtension'] == "ods":
 						dest = ROOT_DIR + "/exifdata/json/ods"
+						shutil.move(filename, dest)
+						pass
+
+					elif p['File:FileTypeExtension'] == "odt":
+						dest = ROOT_DIR + "/exifdata/json/odt"
 						shutil.move(filename, dest)
 						pass
 
