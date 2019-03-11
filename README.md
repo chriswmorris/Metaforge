@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/chriswmorris/Metaforge/master/Template_Data/img/logo.png" width="250 height=300" title="Metaforge Logo">
 
 
-*"A metadata analyzer that creates dynamic reports with a unique filter"*
+*"An OSINT tool that analyzes metadata and creates dynamic reports"*
 <br><br>
 https://chriswmorris.github.io/Metaforge/
 
@@ -21,10 +21,10 @@ dll | docx | doc  |
 exe | gif  | html |
 jpeg| mkv  | mp3  |
 mp4 | odp  | ods  |
-pdf | png  | pptx |
-ppt | svg  | torrent |
-wav | xlsx | xls  |
-zip |
+odt | pdf  | png  | 
+pptx| ppt  | svg  |
+torrent|wav | xlsx |
+xls  |zip |
 
 <br>
 
