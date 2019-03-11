@@ -23,7 +23,7 @@ jpeg| mkv  | mp3  |
 mp4 | odp  | ods  |
 odt | pdf  | png  | 
 pptx| ppt  | svg  |
-torrent|wav | xlsx |
+torrent |wav | xlsx |
 xls  |zip |
 
 <br>
