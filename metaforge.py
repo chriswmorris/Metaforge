@@ -38,7 +38,7 @@ def credits():
 	print("╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝")
 	print("")
 	print("")
-	print(Fore.WHITE + "An OSINT and metadata analysis tool that creates dynamic reports")
+	print(Fore.WHITE + "An OSINT Metadata analyzing tool that filters through tags and creates reports")
 	print("Version 1.3")
 	print(Style.RESET_ALL)
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
