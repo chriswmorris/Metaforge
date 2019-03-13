@@ -38,8 +38,7 @@ def credits():
 	print("╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝")
 	print("")
 	print("")
-	print(Style.BRIGHT+ Fore.BLUE + "Metaforge")
-	print(Fore.WHITE + "A metadata analyzer that creates dynamic reports with a unique filter")
+	print(Fore.WHITE + "An OSINT and metadata analysis tool that creates dynamic reports")
 	print("Version 1.3")
 	print(Style.RESET_ALL)
 	print(Fore.GREEN + "Authors: Chris Morris & Collin Mockbee")
@@ -47,8 +46,8 @@ def credits():
 	print()
 	print("=========================================================")
 	print(Style.RESET_ALL)
-	print(Fore.RED + "Remember to place the files you wish to analyze in ")
-	print("the /media directory!")
+	print(Fore.RED + "Remember to place the files you wish to analyze in this directory!")
+	print(Style.BRIGHT +"-->  "+ ROOT_DIR + "/media  <--")
 	print(Style.RESET_ALL)
 	input("Press [ENTER] to continue")
 	print()
@@ -58,10 +57,6 @@ def condchecking():
 	print()
 	print("Need to check to make sure that the program will run correctly...")
 	print()
-	print(Style.BRIGHT +"NOTE:") 
-	print("1) There cannot be any json files in the exifdata/json/ directory or subdirectories")
-	print("2) There cannot be any files in the exifdata/filtered directory")
-	print(Style.RESET_ALL)
 	input("Press [ENTER] to continue")
 
 	try:
@@ -73,25 +68,28 @@ def condchecking():
 
 	except IOError as er:
 		errno,strerror = er.args
-		print("I/O error({0}): {1}".format(errno,strerror))
+		print(Fore.RED + "I/O error({0}): {1}".format(errno,strerror))
+		print(Style.RESET_ALL)
+
 
 	except:
-		 print("Error:", sys.exc_info()[0])
+		 print(Fore.RED + "Error:", sys.exc_info()[0])
+		 print(Style.RESET_ALL)
 
 def projectcreation():
-	print("=======================Step 2: Project Creation=======================")
+	print("=========================Step 2: Project Creation=========================")
 	#userproj is either defined by user or 6 random digits
 	#This will create the file structure for the user's project
-
-	print()
 
 	randominput = ''.join(random.choice(string.ascii_lowercase 
 		+ string.digits) for _ in range(6))
 
-	
+	print()
 	print()
 	print("Enter a name for your project. It will also be the name of the directory.")
-	userproj = input("(Press enter for a random name): ") 
+	print("(If you would like a random name, leave it blank and press enter)")
+	print()
+	userproj = input("Project Name--> ") 
 	print()
 
 	if not userproj:
@@ -99,18 +97,16 @@ def projectcreation():
 	try:
 		os.makedirs(ROOT_DIR +"/User_Projects/"+ userproj, exist_ok=True)
 		projectdir = ROOT_DIR + "/User_Projects/" + userproj 
-		print(Style.BRIGHT + "Your project is in this directory: " + projectdir)
+		print(Style.BRIGHT + "Your project is named: " + userproj)
+		print(Style.RESET_ALL)
+		print(Fore.GREEN + "Successfully created project folder!")
 		print(Style.RESET_ALL)
 
 	except:
-		print("ERROR: ", sys.exc_info()[0])
+		print(Fore.RED + "ERROR: ", sys.exc_info()[0])
 		sys.exit("Quitting. You need a project folder")
+		print(Style.RESET_ALL)
 
-		
-	print()
-	print(Fore.GREEN + "Successfully created project folder!")
-	print(Style.RESET_ALL)
-	print()
 	return projectdir
 
 def exifrun():
@@ -119,34 +115,41 @@ def exifrun():
 	#Runs exiftool on media/ directory to exifdata/ then runs
 	#jsonsort to sort the json into designated folders
 
-	print("This is going to run the exiftool on all of the media you defined. It could take a while...")
+	print("This is going to run the exiftool on all of the media you defined here:")
+	print(Fore.BLUE + ROOT_DIR + "/media")
+	print(Style.RESET_ALL)
+	print("It could take a while depending how many files you placed.")
+	print()
 	input("Press [ENTER] to continue")
 	try:
 		print()
 		exifJSON()
 	except:
-		print("Exiftool to JSON failed")
+		print(Fore.RED + "Exiftool to JSON failed")
 		print("ERROR:", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 		pass
 
 	try:
 		exifHTML()
 	except:
-		print("Exiftool to HTML failed")
+		print(Fore.RED +"Exiftool to HTML failed")
 		print("ERROR:", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 		pass
 
 	try:
 		exifHTMLDump()
 	except:
-		print("Exiftool to Hexadecimal HTML failed")
+		print(Fore.RED +"Exiftool to Hexadecimal HTML failed")
 		print("ERROR:", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 		pass
 	print()
 
 
 def filtering():
-	print("=======================Step 4: Filtering=======================")
+	print("=============================Step 4: Filtering=============================")
 	print()
 	#This will...
 	#1) Sort the JSON into their respective folder
@@ -157,6 +160,9 @@ def filtering():
 	 'xlsx', 'svg', 'pdf', 'mp4', 'html', 'docx', 'gif', 'wav', 'jpeg', 'mkv']
 
 	print("Now going to sort the JSON into their respective (original) filetype folder")
+	print()
+	input("Press [ENTER] to continue")
+	print()
 	try:
 		jsonsort()
 		print(Fore.GREEN + "Sorting Successful in exifdata/json/")
@@ -164,12 +170,14 @@ def filtering():
 
 	except IOError as sorter:
 		errno,strerror = sorter.args
-		print("I/O error({0}): {1}".format(errno,strerror))
+		print(Fore.RED + "I/O error({0}): {1}".format(errno,strerror))
+		print(Style.RESET_ALL)
 
 	except:
-		print("ERROR:", sys.exc_info()[0])
+		print(Fore.RED + "ERROR:", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 
-	print("Starting Filtering Process")
+	print("Starting Filtering Process...")
 
 	try:
 		filterexec()
@@ -178,19 +186,22 @@ def filtering():
 
 	except IOError as filterer:
 		errno,strerror = filterer.args
-		print("I/O error({0}): {1}".format(errno,strerror))
+		print(Fore.RED + "I/O error({0}): {1}".format(errno,strerror))
+		print(Style.RESET_ALL)
+
 
 	except:
-		print("ERROR:", sys.exc_info()[0])
+		print(Fore.RED +"ERROR:", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 
 
 def makereport(PROJ_DIR):
-	print("=======================Step 5: Make Report=======================")
+	print("=========================Step 5: Make Report=========================")
 	print()
-	#This will...
-	#1) Move exifdata to Project folder 
-	#2) Create the four report pages in html
-	#3) Place the html into the project folder
+	print("This will make the HTML reports and set up the User Project directory")
+	print()
+	input("Press [ENTER] to continue")
+	print()
 
 	def copyfolders(src,dest):
 		try:
@@ -201,44 +212,47 @@ def makereport(PROJ_DIR):
 			else:
 				raise
 
+	#Make HTML Reports			
 	try:
-	
 		statshtml()
 	except:
-		print("ERROR: could not run stat html report", sys.exc_info()[0])
+		print(Fore.RED + "ERROR: could not run stat html report", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 	try:
 		filtershtml()
 	except:
-		print("ERROR: could not run filter html report", sys.exc_info()[0])
+		print(Fore.RED + "ERROR: could not run filter html report", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 	try:
 		rawmetahtml()	
 	except:
-		print("ERROR: could not run rawmetahtml report", sys.exc_info()[0])
+		print(Fore.RED + "ERROR: could not run rawmetahtml report", sys.exc_info()[0])
+		print(Style.RESET_ALL)
 	try:
 		hexmetahtml()
 	except:
-		print("ERROR: could not run hexmetahtml report", sys.exc_info()[0])
-
-	try:
-		print("Copying exifdata to project directory")
-		copyfolders(ROOT_DIR + "/exifdata/" , PROJ_DIR + "/exifdata/")
-
-	except:
-		print("ERROR: could not run stat html report", sys.exc_info()[0])
-	
-	
-	try:
-		print("Placing Template_Data into project dir...")
-		copyfolders(ROOT_DIR + "/Template_Data/", PROJ_DIR + "/Template_Data/")
-		
-	except:
-		print(Fore.RED + "ERROR: Failed to copy Template_Data",sys.exc_info()[0])
+		print(Fore.RED + "ERROR: could not run hexmetahtml report", sys.exc_info()[0])
 		print(Style.RESET_ALL)
 
 
 
-	print("Placing reports into project dir...")
+	#Moving folders to project dir
+	try:
+		print("Copying exifdata to project directory")
+		copyfolders(ROOT_DIR + "/exifdata/" , PROJ_DIR + "/exifdata/")
+	except:
+		print(Fore.RED + "ERROR: could not copy exifdata to project dir: ", sys.exc_info()[0])
+		print(Style.RESET_ALL)
+	try:
+		print("Placing Template_Data into project dir...")
+		copyfolders(ROOT_DIR + "/Template_Data/", PROJ_DIR + "/Template_Data/")
+	except:
+		print(Fore.RED + "ERROR: Failed to copy Template_Data: ",sys.exc_info()[0])
+		print(Style.RESET_ALL)
 
+
+	#Placing reports from ROOT_DIR to PROJ_DIR
+	print("Placing reports into project dir...")
 	try:
 		copyfile(ROOT_DIR + "/" + "index.html", PROJ_DIR + "/index.html")
 		os.remove(ROOT_DIR + "/" + "index.html")
@@ -255,7 +269,6 @@ def makereport(PROJ_DIR):
 		print(Fore.RED + "ERROR: Failed to copy filters.html-- ",sys.exc_info()[0])
 		print(Style.RESET_ALL)
 	
-
 	try:
 		copyfile(ROOT_DIR + "/" + "rawmeta.html", PROJ_DIR + "/rawmeta.html")
 		os.remove(ROOT_DIR + "/" + "rawmeta.html")
@@ -264,22 +277,24 @@ def makereport(PROJ_DIR):
 		print(Fore.RED + "ERROR: Failed to copy rawmeta.html-- ",sys.exc_info()[0])
 		print(Style.RESET_ALL)
 
-
 	try:
 		copyfile(ROOT_DIR + "/" + "hexdump.html", PROJ_DIR + "/hexdump.html")
 		os.remove(ROOT_DIR + "/" + "hexdump.html")
 	except:
 		print(Fore.RED + "ERROR: Failed to copy rawmeta.html-- ",sys.exc_info()[0])
 		print(Style.RESET_ALL)
-	
-	
+
+
+
+	#Removing exifdata/ since it exsists in PROJ_DIR 	
 	try:
 		shutil.rmtree(ROOT_DIR + "/exifdata/")
 	except:
-		print(Fore.RED + "ERROR: Failed to remove /exifdata/ dir",sys.exc_info()[0])
+		print(Fore.RED + "ERROR: Failed to remove /exifdata/ dir: ",sys.exc_info()[0])
 		print(Style.RESET_ALL)
 
 
+	#Setting up exifdata dir for next run
 	try:
 		print("Setting up exifdata directory...")
 		stageset()
@@ -288,17 +303,18 @@ def makereport(PROJ_DIR):
 		print(Fore.RED + "Could not run the stageset function-- ", sys.exc_info()[0])
 		print(Style.RESET_ALL)
 
-
-	print("===============================================================")
 	print()
+	print(Fore.GREEN + "FINISHED!")
+	print(Style.RESET_ALL)
 	print(Style.BRIGHT + "Project Folder is here:")
 	print(Style.RESET_ALL)
 	print(Back.WHITE+ Fore.BLACK+ PROJ_DIR)
 	print(Style.RESET_ALL)
-	print(Style.BRIGHT+ "To view the Report, click on the index.html file in your User_Projects folder")
+	print(Style.BRIGHT+ "To view the Report, click on the index.html file")
 	print(Style.RESET_ALL)
 	print("===============================================================")
 	print()
+	sys.exit(0)
 
 def main():
 	credits()
