@@ -146,6 +146,12 @@ def checkdelete():
 
 #This function sorts the json files into their respective folder based on file extension
 def jsonsort():
+
+	docs = ["docx", "doc", "DOC", "DOCX"]
+	excel = ["xlsx", "xls", "XLSX", "XLS"]
+	powerpoint = ["pptx","ppt","PPTX","PPT"]
+
+
 	os.chdir(ROOT_DIR + "/exifdata/json/")
 	jfiles = [filename for filename in os.listdir(".") if os.path.isfile(filename)]
 	for filename in jfiles:
@@ -173,11 +179,6 @@ def jsonsort():
 
 					elif p['File:FileTypeExtension'] == "dll":
 						dest = ROOT_DIR + "/exifdata/json/dll"
-						shutil.move(filename, dest)
-						pass
-
-					elif p['File:FileTypeExtension'] == "docx":
-						dest = ROOT_DIR + "/exifdata/json/docx"
 						shutil.move(filename, dest)
 						pass
 
@@ -226,11 +227,6 @@ def jsonsort():
 						shutil.move(filename, dest)
 						pass
 
-					elif p['File:FileTypeExtension'] == "pptx":
-						dest = ROOT_DIR + "/exifdata/json/pptx"
-						shutil.move(filename, dest)
-						pass
-
 					elif p['File:FileTypeExtension'] == "svg":
 						dest = ROOT_DIR + "/exifdata/json/svg"
 						shutil.move(filename, dest)
@@ -246,10 +242,6 @@ def jsonsort():
 						shutil.move(filename, dest)
 						pass
 
-					elif p['File:FileTypeExtension'] == "xlsx":
-						dest = ROOT_DIR + "/exifdata/json/xlsx"
-						shutil.move(filename, dest)
-						pass
 
 					elif p['File:FileTypeExtension'] == "zip":
 						dest = ROOT_DIR + "/exifdata/json/zip"
@@ -258,17 +250,18 @@ def jsonsort():
 
 					# Legacy MS Office Filetypes go into their newer-type's folder
 
-					elif p['File:FileTypeExtension'] == "doc":
-						dest = ROOT_DIR + "exifdata/json/docx"
+					elif p['File:FileTypeExtension'] in docs:
+						dest = ROOT_DIR + "/exifdata/json/docx"
 						shutil.move(filename, dest)
 						pass
 
-					elif p['File:FileTypeExtension'] == "xls":
+				
+					elif p['File:FileTypeExtension'] in excel:
 						dest = ROOT_DIR + "exifdata/json/xlsx"
 						shutil.move(filename, dest)
 						pass		
 
-					elif p['File:FileTypeExtension'] == "ppt":
+					elif p['File:FileTypeExtension'] in powerpoint:
 						dest = ROOT_DIR + "exifdata/json/pptx"
 						shutil.move(filename, dest)
 						pass
