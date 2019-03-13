@@ -18,6 +18,8 @@ IMPORTANT: Always include the name of the file in the filtered tags as a tuple
 https://www.miniwebtool.com/remove-line-breaks/
 '''
 
+dest = ROOT_DIR + "/exifdata/filtered/"
+
 def JPEGfilter():
 	#Load list of tags as a tuple 
 	jpegtags = ('Adobe:APP14Flags0',  'Adobe:DCTEncodeVersion',  'Composite:CircleOfConfusion',  'Composite:FocalLength35efl',
@@ -46,7 +48,6 @@ def JPEGfilter():
 	  'XMP-photoshop:DateCreated',  'XMP-xmp:CreatorTool',  'XMP-xmpMM:DerivedFromDocumentID',  'XMP:XMPToolkit',  'XMP-x:XMPToolkit')
 	
 	#Load files then compare to list of tags
-	jpegdest = ROOT_DIR + "/exifdata/filtered/"
 	jpegsrc = ROOT_DIR + "/exifdata/json/jpeg/"
 
 	os.chdir(jpegsrc)
@@ -63,7 +64,7 @@ def JPEGfilter():
 	os.chdir(ROOT_DIR + "/exifdata/json/jpeg")						
 	for jpegfile in os.listdir("."):
 		if ".txt" in jpegfile:
-			shutil.move(jpegsrc + jpegfile, jpegdest)
+			shutil.move(jpegsrc + jpegfile, dest)
 
 
 
@@ -87,7 +88,6 @@ def PNGfilter():
 	  'XMP:Marked',  'XMP:MetadataDate',  'XMP:ModifyDate',  'XMP:Orientation',  'XMP-photoshop:DateCreated',  'XMP:Title',  'XMP:TransmissionReference',
 	  'XMP:UserComment',  'XMP-xmp:CreatorTool',  'XMP-xmpMM:DerivedFromDocumentID',  'XMP:XMPToolkit',  'XMP:XMPToolkit',  'XMP-x:XMPToolkit')
 
-	pngdest = ROOT_DIR + "/exifdata/filtered"
 	pngsrc = ROOT_DIR + "/exifdata/json/png/"
 
 	os.chdir(pngsrc)
@@ -103,7 +103,7 @@ def PNGfilter():
 	os.chdir(pngsrc)						
 	for pngfile in os.listdir("."):
 		if ".txt" in pngfile:
-			shutil.move(pngsrc + pngfile, pngdest)						
+			shutil.move(pngsrc + pngfile, dest)						
 
 
 def GIFfilter():
@@ -114,7 +114,6 @@ def GIFfilter():
 	"GIF:AnimationIterations","GIF:FrameCount","GIF:Duration","HTML:Copyright","HTML:msapplicationTileColor","HTML:msapplicationTileImage",
 	"HTML:pDomain_verify")
 
-	gifdest = ROOT_DIR + "/exifdata/filtered"
 	gifsrc = ROOT_DIR + "/exifdata/json/gif/"
 
 	os.chdir(gifsrc)
@@ -130,7 +129,7 @@ def GIFfilter():
 	os.chdir(gifsrc)						
 	for giffile in os.listdir("."):
 		if ".txt" in giffile:
-			shutil.move(gifsrc + giffile, gifdest)
+			shutil.move(gifsrc + giffile, dest)
 
 
 
@@ -146,7 +145,6 @@ def DOCXfilter():
 	"FlashPix:SharedDoc","FlashPix:CompObjUserType","FlashPix:Comments","FlashPix:Bytes","FlashPix:Slides","FlashPix:Notes",
 	"FlashPix:HiddenSlides","FlashPix:AppVersion")
 
-	docxdest = ROOT_DIR + "/exifdata/filtered"
 	docxsrc = ROOT_DIR + "/exifdata/json/docx/"
 
 	os.chdir(docxsrc)
@@ -162,7 +160,7 @@ def DOCXfilter():
 	os.chdir(docxsrc)						
 	for docxfile in os.listdir("."):
 		if ".txt" in docxfile:
-			shutil.move(docxsrc + docxfile, docxdest)
+			shutil.move(docxsrc + docxfile, dest)
 	
 
 def EXEfilter():
@@ -173,7 +171,6 @@ def EXEfilter():
 	"EXE:ProductVersionNumber","EXE:EntryPoint","EXE:SquirrelAwareVersion","EXE:ProductVersion","EXE:CharacterSet",
 	"EXE:Comments","EXE:ObjectFileType","EXE:FileVersionNumber","EXE:FileFlags","EXE:InitializedDataSize")
 
-	exedest = ROOT_DIR + "/exifdata/filtered"
 	exesrc = ROOT_DIR + "/exifdata/json/exe/"
 
 	os.chdir(exesrc)
@@ -189,14 +186,13 @@ def EXEfilter():
 	os.chdir(exesrc)						
 	for exefile in os.listdir("."):
 		if ".txt" in exefile:
-			shutil.move(exesrc + exefile, exedest)
+			shutil.move(exesrc + exefile, dest)
 
 	
 def MKVfilter():
 	mkvtags=("File:FileModifyDate","Matroska:MuxingApp","Matroska:WritingApp","Matroska:Duration","Matroska:TrackType","Matroska:Title","Matroska:AudioSampleRate",
 	"Matroska:VideoFrameRate","Matroska:VideoCodecID","Matroska:ImageWidth","Matroska:ImageHeight","Composite:ImageSize","Composite:Megapixels")
 
-	mkvdest = ROOT_DIR + "/exifdata/filtered"
 	mkvsrc = ROOT_DIR + "/exifdata/json/mkv/"
 
 	os.chdir(mp3src)
@@ -212,7 +208,7 @@ def MKVfilter():
 	os.chdir(mkvsrc)						
 	for mkvfile in os.listdir("."):
 		if ".txt" in mkvfile:
-			shutil.move(mkvsrc + mkvfile, mkvdest)
+			shutil.move(mkvsrc + mkvfile, dest)
 
 
 
@@ -224,7 +220,6 @@ def MP3filter():
 		'ID3:Title','ID3:Artist','ID3:Album','ID3:Year','ID3:Comment','ID3:Genre','Composite:DateTimeOriginal','Composite:Duration')
 
 
-	mp3dest = ROOT_DIR + "/exifdata/filtered"
 	mp3src = ROOT_DIR + "/exifdata/json/mp3/"
 
 	os.chdir(mp3src)
@@ -240,7 +235,7 @@ def MP3filter():
 	os.chdir(mp3src)						
 	for mp3file in os.listdir("."):
 		if ".txt" in mp3file:
-			shutil.move(mp3src + mp3file, mp3dest)
+			shutil.move(mp3src + mp3file, dest)
 
 
 def MP4filter():
@@ -248,8 +243,6 @@ def MP4filter():
 	"QuickTime:HandlerDescription","QuickTime:HandlerVendorID","XMP:CreateDate","XMP:VideoFieldOrder","XMP:HistorySoftwareAgent","XMP:XMPToolkit",
 	"XMP:PantryHistorySoftwareAgent","XMP:WindowsAtomUncProjectPath","XMP:CreatorTool","XMP:MacAtomPosixProjectPath")
 
-
-	mp4dest = ROOT_DIR + "/exifdata/filtered"
 	mp4src = ROOT_DIR + "/exifdata/json/mp4/"
 
 	os.chdir(mp4src)
@@ -265,7 +258,7 @@ def MP4filter():
 	os.chdir(mp4src)						
 	for mp4file in os.listdir("."):
 		if ".txt" in mp4file:
-			shutil.move(mp4src + mp4file, mp4dest)
+			shutil.move(mp4src + mp4file, dest)
 	
 
 def HTMLfilter():
@@ -276,7 +269,6 @@ def HTMLfilter():
 	"HTML:Keywords","HTML:csrfToken","HTML:themeColor")
 
 
-	htmldest = ROOT_DIR + "/exifdata/filtered"
 	htmlsrc = ROOT_DIR + "/exifdata/json/html/"
 
 	os.chdir(htmlsrc)
@@ -292,7 +284,7 @@ def HTMLfilter():
 	os.chdir(htmlsrc)						
 	for htmlfile in os.listdir("."):
 		if ".txt" in htmlfile:
-			shutil.move(htmlsrc + htmlfile, htmldest)
+			shutil.move(htmlsrc + htmlfile, dest)
 
 def ODPfilter():
 
@@ -303,8 +295,6 @@ def ODPfilter():
 	"XMP-exif:UserComment","XMP:InstanceID","XMP-photoshop:DateCreated","XMP-xmp:CreatorTool","XMP-xmpMM:DerivedFromDocumentID",
 	"XMP:XMPToolkit","XMP-x:XMPToolkit")
 
-
-	odpdest = ROOT_DIR + "/exifdata/filtered"
 	odpsrc = ROOT_DIR + "/exifdata/json/odp/"
 
 	os.chdir(odpsrc)
@@ -320,7 +310,7 @@ def ODPfilter():
 	os.chdir(odpsrc)						
 	for odpfile in os.listdir("."):
 		if ".txt" in odpfile:
-			shutil.move(odpsrc + odpfile, odpdest)
+			shutil.move(odpsrc + odpfile, dest)
 
 
 
@@ -337,7 +327,6 @@ def PPTXfilter():
 		'XML:LinksUpToDate',  'XML:SharedDoc',  'XML:HyperlinksChanged',  'XML:AppVersion',  'XML:LastModifiedBy',  'XML:RevisionNumber',  
 		'XML:CreateDate',  'XML:ModifyDate',  'XML:KSOProductBuildVer',  'XMP:Title',  'XMP:Creator',  'XML:Company',  'XML:LastPrinted')
 
-	pptxdest = ROOT_DIR + "/exifdata/filtered"
 	pptxsrc = ROOT_DIR + "/exifdata/json/pptx/"
 
 	os.chdir(pptxsrc)
@@ -353,7 +342,7 @@ def PPTXfilter():
 	os.chdir(pptxsrc)						
 	for pptxfile in os.listdir("."):
 		if ".txt" in pptxfile:
-			shutil.move(pptxsrc + pptxfile, pptxdest)
+			shutil.move(pptxsrc + pptxfile, dest)
 
 
 def ODSfilter():
@@ -366,8 +355,6 @@ def ODSfilter():
 	"XMP:Date","XMP:Editing-duration","XMP:Editing-cycles","XMP:Document-statisticTable-count","XMP:Document-statisticCell-count","XMP:Document-statisticObject-count",
 	"XMP:Generator")
 
-
-	odsdest = ROOT_DIR + "/exifdata/filtered"
 	odssrc = ROOT_DIR + "/exifdata/json/ods/"
 
 	os.chdir(odssrc)
@@ -383,7 +370,7 @@ def ODSfilter():
 	os.chdir(odssrc)						
 	for odsfile in os.listdir("."):
 		if ".txt" in odsfile:
-			shutil.move(odssrc + odsfile, odsdest)
+			shutil.move(odssrc + odsfile, dest)
 
 def PDFfilter():
 
@@ -393,8 +380,6 @@ def PDFfilter():
 	"XMP:InstanceID","XMP-photoshop:DateCreated","XMP-xmp:CreatorTool","XMP-xmpMM:DerivedFromDocumentID","XMP:XMPToolkit","XMP-x:XMPToolkit",
 	"PDF:PageCount","PDF:Language","PDF:PTEX_Fullbanner","PDF:PXCViewerInfo")
 
-
-	pdfdest = ROOT_DIR + "/exifdata/filtered"
 	pdftsrc = ROOT_DIR + "/exifdata/json/pdf/"
 
 	os.chdir(pdfsrc)
@@ -410,7 +395,7 @@ def PDFfilter():
 	os.chdir(pdfsrc)						
 	for pdffile in os.listdir("."):
 		if ".txt" in pdffile:
-			shutil.move(pdfsrc + pdffile, pdfdest)
+			shutil.move(pdfsrc + pdffile, dest)
 
 
 
@@ -419,8 +404,6 @@ def SVGfilter():
 	"XMP:WorkFormat","XMP:WorkType","XMP:WorkDescription","XMP:WorkTitle","XMP:WorkPublisherAgentTitle","XMP:WorkCreatorAgentTitle","XMP:WorkRightsAgentTitle",
 	"XMP:WorkLicense","XMP:WorkLanguage","XMP:About","XMP:LicensePermits")
 
-
-	svgdest = ROOT_DIR + "/exifdata/filtered"
 	svgsrc = ROOT_DIR + "/exifdata/json/svg/"
 
 	os.chdir(svgsrc)
@@ -436,7 +419,7 @@ def SVGfilter():
 	os.chdir(svgsrc)						
 	for svgfile in os.listdir("."):
 		if ".txt" in svgfile:
-			shutil.move(svgsrc + svgfile, svgdest)
+			shutil.move(svgsrc + svgfile, dest)
 	
 
 def TORRENTfilter():
@@ -444,7 +427,6 @@ def TORRENTfilter():
 	torrenttags = ('Torrent:Announce','Torrent:CreateDate','Torrent:Length','Torrent:Name','Torrent:PieceLength','Torrent:Comment','Torrent:Creator','Torrent:URLList',
 	'Torrent:Private','Torrent:AnnounceList','Torrent:File','Torrent:FileLength')
 
-	torrentdest = ROOT_DIR + "/exifdata/filtered"
 	torrentsrc = ROOT_DIR + "/exifdata/json/torrent/"
 
 	os.chdir(torrentsrc)
@@ -460,13 +442,12 @@ def TORRENTfilter():
 	os.chdir(torrentsrc)						
 	for torrentfile in os.listdir("."):
 		if ".txt" in torrentfile:
-			shutil.move(torrentsrc + torrentfile, torrentdest)
+			shutil.move(torrentsrc + torrentfile, dest)
 
 def WAVfilter():
 	wavtags=("File:FileModifyDate","RIFF:Encoding","RIFF:SampleRate","RIFF:AvgBytesPerSec","RIFF:Description","RIFF:Originator","RIFF:DateTimeOriginal",
 	"RIFF:OriginatorReference","Composite:Duration","RIFF:Software","RIFF:Title","RIFF:Artist","RIFF:Comment","RIFF:DateCreated")
 
-	wavdest = ROOT_DIR + "/exifdata/filtered"
 	wavsrc = ROOT_DIR + "/exifdata/json/wav/"
 
 	os.chdir(wavsrc)
@@ -482,14 +463,13 @@ def WAVfilter():
 	os.chdir(wavsrc)						
 	for wavfile in os.listdir("."):
 		if ".txt" in wavfile:
-			shutil.move(wavsrc + wavfile, wavdest)
+			shutil.move(wavsrc + wavfile, dest)
 
 
 def ZIPfilter():
 	
 	ziptags=("File:FileModifyDate","ZIP:ZipRequiredVersion","ZIP:ZipModifyDate","ZIP:ZipFileName","ZIP:ZipUncompressedSize","ZIP:ZipCompressedSize","ZIP:ZipCRC")
 
-	zipdest = ROOT_DIR + "/exifdata/filtered"
 	zipsrc = ROOT_DIR + "/exifdata/json/zip/"
 
 	os.chdir(zipsrc)
@@ -505,7 +485,7 @@ def ZIPfilter():
 	os.chdir(zipsrc)						
 	for zipfile in os.listdir("."):
 		if ".txt" in zipfile:
-			shutil.move(zipsrc + zipfile, zipdest)
+			shutil.move(zipsrc + zipfile, dest)
 
 def DLLfilter():
 
@@ -514,7 +494,6 @@ def DLLfilter():
 	"EXE:CompanyName","EXE:CharacterSet","EXE:LanguageCode","EXE:FileOS","EXE:ProductVersionNumber","EXE:EntryPoint","EXE:SquirrelAwareVersion",
 	"EXE:ProductVersion","EXE:CharacterSet","EXE:Comments","EXE:ObjectFileType","EXE:FileVersionNumber","EXE:FileFlags","EXE:InitializedDataSize")
 
-	dlldest = ROOT_DIR + "/exifdata/filtered"
 	dllsrc = ROOT_DIR + "/exifdata/json/dll/"
 
 	os.chdir(dllsrc)
@@ -530,7 +509,7 @@ def DLLfilter():
 	os.chdir(dllsrc)						
 	for dllfile in os.listdir("."):
 		if ".txt" in dllfile:
-			shutil.move(dllsrc + dllfile, dlldest)
+			shutil.move(dllsrc + dllfile, dest)
 
 
 	
@@ -543,7 +522,6 @@ def XLSXfilter():
 	"FlashPix:ModifyDate","FlashPix:Security","FlashPix:Company","FlashPix:TitleOfParts","FlashPix:HeadingPairs","FlashPix:SharedDoc",
 	"FlashPix:AppVersion","FlashPix:Tag_EmailSubject","FlashPix:Tag_AuthorEmail","FlashPix:Tag_AuthorEmailDisplayName","XML:Application")
 
-	xlsxdest = ROOT_DIR + "/exifdata/filtered"
 	xlsxsrc = ROOT_DIR + "/exifdata/json/xlsx/"
 
 	os.chdir(xlsxsrc)
@@ -559,7 +537,7 @@ def XLSXfilter():
 	os.chdir(xlsxsrc)						
 	for xlsxfile in os.listdir("."):
 		if ".txt" in xlsxfile:
-			shutil.move(xlsxsrc + xlsxfile, xlsxdest)
+			shutil.move(xlsxsrc + xlsxfile, dest)
 
 
 def ODTfilter():
@@ -570,7 +548,6 @@ def ODTfilter():
 	"XMP:About","XMP:DateAcquired","XMP-dc:Creator","XMP-dc:Rights","XMP:DocumentID","XMP-exif:UserComment","XMP:InstanceID",
 	"XMP-photoshop:DateCreated","XMP-xmp:CreatorTool","XMP-xmpMM:DerivedFromDocumentID","XMP:XMPToolkit","XMP-x:XMPToolkit")
 
-	odtdest = ROOT_DIR + "/exifdata/filtered"
 	odtsrc = ROOT_DIR + "/exifdata/json/odt/"
 
 	os.chdir(odtsrc)
@@ -586,7 +563,7 @@ def ODTfilter():
 	os.chdir(odtsrc)						
 	for odtfile in os.listdir("."):
 		if ".txt" in odtfile:
-			shutil.move(odtsrc + odtfile, odtdest)
+			shutil.move(odtsrc + odtfile, dest)
 
 
 	
@@ -691,4 +668,4 @@ def filterexec():
 		ODTfilter()
 	except:
 		pass
-		
+			
