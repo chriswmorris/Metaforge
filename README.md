@@ -75,7 +75,7 @@ xls  |zip |
 When Metaforge is finished running, check the User_Projects folder and look for the name of the project you entered. Click on the index.html file to view your generated report.
 
 
-
+<img src="https://github.com/chriswmorris/Metaforge/blob/master/docs/images/screenshot.png">
 
 
 **Thanks to...**
